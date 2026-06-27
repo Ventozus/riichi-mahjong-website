@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы игры</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/preloader.css">
+    <script src="js/header.js" defer></script>
+    <!-- Import map для Three.js (jsDelivr — надёжнее skypack) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three":          "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+            "three/addons/":  "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+<script src="js/preloader.js"></script>
+<!-- хедер -->
+<div class="blk-bg-clr" id="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="img/logo-png/Logo-Rima-Main.png" class="logo-rima-header">
+        </div>
+        <nav class="header-nav">
+            <a href="/page-4.html">в культуре</a>
+            <a href="/constructor.html">конструктор рук</a>
+            <a href="/page-2.html">правила</a>
+            <a href="/page-3.html">стоимость рук</a>
+            <a href="/index.html">главная</a>
+        </nav>
+    </div>
+</div>
+<!-- баннер на странице -->
+<div class="padding-block-container m-b-25-block m-t-100-block z-1" style="position: relative;">
+    <!-- звезда на фоне -->
+    <div class="absolute-image-container z-2 parallax-container">
+        <img src="img/g-star-004.png" id="g-star-004" class="layer star-anim-rotate-01" width="70%" data-speed="0.1">
+    </div>
+    <!-- тайлы на фоне -->
+    <div class="absolute-image-container z-1 parallax-container">
+        <img src="img/TROG-page-02/TROG-tail-01.png" width="24%" id="TROG-tail-01" class="layer" data-speed="0.7">
+        <img src="img/TROG-page-02/TROG-tanuki-01.png" width="40%" id="TROG-tanuki-01" class="layer" data-speed="0.9">
+        <img src="img/TROG-page-02/TROG-hand-01.png" width="15%" id="TROG-hand-01" class="layer" data-speed="1.25">
+        <img src="img/TROG-page-02/TROG-tile-hand-01.png" width="25%" id="TROG-tile-hand-01" class="layer" data-speed="1.4">
+        <img src="img/TROG-page-02/TROG-table-01.png" width="100%" id="TROG-table-01" class="layer" data-speed="1">
+        <img src="img/TROG-page-02/TROG-tiles-01_1.png" width="100%" id="TROG-tiles-01_1" class="layer" data-speed="1.2">
+        <img src="img/TROG-page-02/TROG-tiles-01.png" width="100%" id="TROG-tiles-01" class="layer" data-speed="1.4">
+    </div>
+    <div class="block-horizontal-align">
+        <div class="block-container" style="width: 50%;">
+            <h1 class="t-l-align" style="margin-right: 12px;">
+                <span class="bni-line-wrap"><span class="bni-line" style="animation-delay:.28s">Основы</span></span>
+                <span class="bni-line-wrap"><span class="bni-line" style="animation-delay:.44s">игры</span></span>
+            </h1>
+        </div>
+        <div class="block-container">
+        <div class="block-container-horizontal items-r-align">
+            <svg width="100%" height="4" xmlns="http://www.w3.org/2000/svg" style="margin-top: 8px;">
+                <line x1="0" y1="1" x2="100%" y2="1"
+                stroke="black"
+                stroke-width="4"
+                class="bni-svg-line"
+                style="animation-delay:.52s" />
+            </svg>
+            <div class="square bni-scale-in" style="animation-delay:.58s"><h2>#</h2></div>
+            <div class="square bni-scale-in" style="animation-delay:.68s"><h2>02</h2></div>
+        </div>
+        <h3 class="t-r-align bni-fade-right" style="margin-right: 4px; animation-delay:.62s">основы</h3>
+        </div>
+    </div>
+    <div class="block-horizontal-align" style="max-height: 230px;">
+        <div class="block-container"><p class="hh t-l-align bni-fade-left" style="margin-left: -6px; animation-delay:.32s">麻雀</p></div>
+    </div>
+    <div class="block-container" style="height: 180px;"></div>
+    <div class="block-horizontal-align">
+        <div class="block-container">
+            <div class="block-container-horizontal items-b-align">
+            <div class="block-container"></div>
+            <div class="block-container"></div>
+            <div class="block-container">
+                <div class="gradient-block bni-fade-up" style="animation-delay:.82s">
+                    <h3 class="t-r-align" style="font-size: 24px;">масти тайлов,
+                                подготовка к партии</h3>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Масти тайлов -->
+<div class="block-container p-b-100 m-b-0-block grn-bg-clr" id="section-suits">
+<div class="padding-block-container p-t-100">
+    <div class="block-container">
+        <h2 class="t-l-align">Масти тайлов</h2>
+    </div>
+</div>
+<div id="tiles-3d-container" style="width:100%;height:600px;position:relative;"></div>
+</div>
+<!-- Основы -->
+<div class="block-container blk-bg-clr" id="section-basics">
+<div class="padding-block-container p-t-100 p-b-100">
+    <h2 class="t-l-align">Рука</h2>
+    <p>Рука —&nbsp;сет из&nbsp;13 тайлов, которые игрок<br>
+        держит у&nbsp;себя, не&nbsp;показывая отсальным игрокам. </p>
+    <div class="grn-p-18">
+        <img src="img/tiles-render/21.png" width="100%">
+    </div>
+    <p>На рисунке пример темпая.<p>
+</div>
+<div class="padding-block-container p-b-100">
+    <h2 class="m-b-25-block">Палочки<br>для счёта</h2>
+    <div class="stick-section">
+        <div class="stick-list">
+            <div class="stick-row">
+                <img src="img/sticks-001/stick-100.png" class="stick-block">
+                <p class="stick-label">100</p>
+            </div>
+            <div class="stick-row">
+                <img src="img/sticks-001/stick-1000.png" class="stick-block">
+                <p class="stick-label">1000</p>
+            </div>
+            <div class="stick-row">
+                <img src="img/sticks-001/stick-5000.png" class="stick-block">
+                <p class="stick-label">5000</p>
+            </div>
+            <div class="stick-row">
+                <img src="img/sticks-001/stick-10000.png" class="stick-block">
+                <p class="stick-label">10000</p>
+            </div>
+        </div>
+        <div class="stick-text">
+            <p>Счёт в&nbsp;живой игре осуществляется<br>
+                при&nbsp;помощи палочек, с&nbsp;нанесённым<br>
+                на&nbsp;них узором.</p><br>
+            <p>Иногда вместо палочек с&nbsp;узором<br>
+                используют просто цветные палочки<br>
+                или смешивают наборы.</p>
+        </div>
+    </div>
+</div>
+<div class="padding-block-container p-t-100 p-b-100">
+    <h2>Цель раунда</h2>
+    <p class="t-c-align">Игроку следует собрать правильную комбинацию тайлов.<br>
+        Есть правила по&nbsp;которым нужно собрать руку, но&nbsp;есть<br>
+        и&nbsp;конкретные комбинации. которые нужно знать.</p>
+</div>
+<div class="padding-block-container p-t-100 p-b-100">
+    <!-- Заголовок блока -->
+    <div class="winhand-header">
+        <h2 class="t-l-align">Комбинация</h2>
+        <p class="t-r-align">Победная рука состоит<br>из&nbsp;4 сетов по&nbsp;три тайла и&nbsp;одной пары</p>
+    </div>
+
+    <!-- Пример победной руки: пон + 3 чи + пара = 14 тайлов -->
+    <div class="winhand">
+
+        <div class="winhand-group">
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/sou-9.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/sou-9.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/sou-9.png" class="winhand-tile">
+            </div>
+            <p class="winhand-label">тройка</p>
+        </div>
+
+        <div class="winhand-sep"></div>
+
+        <div class="winhand-group">
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/pin-1.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/pin-2.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/pin-3.png" class="winhand-tile">
+            </div>
+            <p class="winhand-label">последовательность</p>
+        </div>
+
+        <div class="winhand-sep"></div>
+
+        <div class="winhand-group">
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/sou-4.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/sou-5.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/sou-6.png" class="winhand-tile">
+            </div>
+            <p class="winhand-label">последовательность</p>
+        </div>
+
+        <div class="winhand-sep"></div>
+
+        <div class="winhand-group">
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/man-7.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/man-8.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/man-9.png" class="winhand-tile">
+            </div>
+            <p class="winhand-label">последовательность</p>
+        </div>
+
+        <div class="winhand-sep"></div>
+
+        <div class="winhand-group">
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/wind-east.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/wind-east.png" class="winhand-tile">
+            </div>
+            <p class="winhand-label">пара</p>
+        </div>
+
+    </div>
+    <div class="block-container p-b-100">
+        <p>В&nbsp;вашей руке обязательно должно быть<br>
+            14 тайлов для&nbsp;победы. 14 тайл игрок берёт из&nbsp;стены.</p>
+    </div>
+    <div class="block-container p-b-100">
+        <div class="combo-block">
+            <div class="combo-row" data-combo="toitsu" title="Нажмите, чтобы увидеть другой пример">
+                <div class="combo-tiles-col">
+                    <img src="img/tile-png-white-bg/dragon-green.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/dragon-green.png" class="combo-tile">
+                </div>
+                <p class="combo-desc"><strong>Пара (Тойцу)</strong><br><br>
+                Состоит из 2 одинаковых тайлов.<br>
+                Обязательная часть любой победной руки.</p>
+            </div>
+            <div class="combo-row" data-combo="chi" title="Нажмите, чтобы увидеть другой пример">
+                <div class="combo-tiles-col">
+                    <img src="img/tile-png-white-bg/man-1.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/man-2.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/man-3.png" class="combo-tile">
+                </div>
+                <p class="combo-desc"><strong>Чи (Коцу)</strong><br><br>
+                Состоит из 3 последовательных тайлов одной масти.<br>
+                Берётся только у игрока слева.</p>
+            </div>
+            <div class="combo-row" data-combo="pon" title="Нажмите, чтобы увидеть другой пример">
+                <div class="combo-tiles-col">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="combo-tile">
+                </div>
+                <p class="combo-desc"><strong>Пон (Шунцзу)</strong><br><br>
+                Состоит из 3 одинаковых тайлов.<br>
+                Можно взять у любого игрока за столом.</p>
+            </div>
+            <div class="combo-row" data-combo="kan" title="Нажмите, чтобы увидеть другой пример">
+                <div class="combo-tiles-col">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="combo-tile">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="combo-tile">
+                </div>
+                <p class="combo-desc"><strong>Кан (Канцу)</strong><br><br>
+                Состоит из 4 одинаковых тайлов.<br>
+                Особый сет, после объявления которого игрок тянет дополнительный тайл.</p>
+            </div>
+        </div>
+    </div>
+    <div class="block-container">
+        <div class="block-container block-container-horizontal items-b-align">
+            <div class="block-container" style="width: 150%;">
+                <p>Каждый ход игрок<br>
+                    избавляется от&nbsp;лишнего тайла<br>
+                    и&nbsp;берёт в&nbsp;руку новый тайл.</p>
+            </div>
+            <div class="block-container" style="width: 150%;">
+                <p>Каждый ход игрок<br>
+                    избавляется от&nbsp;лишнего тайла<br>
+                    и&nbsp;берёт в&nbsp;руку новый тайл.</p>
+            </div>
+            <div class="block-container" style="width: 100%;"></div>
+            <div class="block-container" style="width: 25%;">
+                <p style="white-space: nowrap;">Тайл из стены</p>
+            </div>
+        </div>
+        <!-- Рука: 13 тайлов + 1 тянутый из стены -->
+        <div class="handrow">
+            <div class="handrow-main">
+                <img src="img/tile-png-white-bg/man-1.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/man-2.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/man-3.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/pin-4.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/pin-5.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/pin-6.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/sou-7.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/sou-8.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/sou-9.png"      class="handrow-tile">
+                <img src="img/tile-png-white-bg/wind-east.png"  class="handrow-tile">
+                <img src="img/tile-png-white-bg/wind-east.png"  class="handrow-tile">
+                <img src="img/tile-png-white-bg/wind-east.png"  class="handrow-tile">
+                <img src="img/tile-png-white-bg/dragon-red.png" class="handrow-tile">
+            </div>
+            <div class="handrow-draw">
+                <img src="img/tile-png-white-bg/dragon-red.png" class="handrow-tile handrow-tile--drawn">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- блок что такое маджонг -->
+<div class="padding-block-container m-b-100-block m-t-100-block">
+    <div class="block-container">
+        <h3 class="t-l-align">Стена</h3>
+    </div>
+<div class="block-horizontal-align">
+    <div class="block-container">
+        <p>Местная »колода карт»,<br>
+            выстроившееся<br>
+            в&nbsp;стену</p>
+    </div>
+    <div class="block-container"></div>
+    <div class="block-container">
+        <p class="t-r-align">Каждая сторона состоит <br>
+                                из&nbsp;34 тайлов.<br>
+                                (2x17)</p>
+    </div>
+</div>
+<div class="block-horizontal-align">
+    <div class="block-container"></div>
+    <div class="block-container image-container">
+        <img src="img/tiles-render/22.png" style="width: 600%;">
+    </div>
+    <div class="block-container"></div>
+</div>
+<div class="block-horizontal-align p-b-100">
+    <div class="block-container">
+            <p>Каждый ход,<br>
+                игроки берут в&nbsp;руку<br>
+                по&nbsp;одному тайлу из&nbsp;стены</p>
+    </div>
+    <div class="block-container"></div>
+    <div class="block-container">
+        <p class="t-r-align">Раунд<br>
+                                заканчивается, если<br>
+                                игроки использовали все<br>
+                                тайлы, кроме мёртвой стены.</p>
+    </div>
+</div>
+<div class="block-container items-c-align p-t-100 p-b-100">
+    <div class="block-container" style="max-width: 1000px;">
+        <h2 class="t-l-align p-b-100">Мёртвая стена</h2>
+        <div class="block-container items-c-align" style="width: 74%;"><p>индикатор доры</p></div>
+        <img src="img/tiles-render/11.png" width="100%">
+        <div class="block-container block-container-horizontal">
+            <p class="t-c-align">Из&nbsp;этой части стены тайлы<br>
+                не&nbsp;берут, кроме одного из&nbsp;исключений.</p>
+            <div style="width: 20%;"></div>
+            <p class="t-c-align">Живая часть стены, откуда<br>
+                можно брать тайлы</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- подготовка к партии -->
+<div class="padding-block-container max-width-800 p-b-100">
+<div class="block-container"><h2 class="t-l-align">Подготовка<br>к партии</h2></div>
+</div>
+<!-- Videos 01–10: sticky card stack -->
+<div class="vstack-section" id="vstack">
+    <div class="vstack-sticky">
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/1.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Перемешивание</h3>
+                    <p class="t-l-align">Все 4 игрока перемешивают<br>тайлы на столе руками.</p>
+                </div>
+                <div class="number-right"><h2>01</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline preload="none">
+                <source data-src="/video/video-numeration/2.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Стена</h3>
+                    <p class="t-l-align">Затем начинают выкладывать<br>стену высотой 2 тайла и длиной 17 тайлов.</p>
+                </div>
+                <div class="number-right"><h2>02</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/3.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Выбор диллера</h3>
+                    <p class="t-l-align">Один из&nbsp;игроков бросает кости.<br>
+                        Сумма очков выпавших на&nbsp;костях<br>
+                        определяет, кто станет постоянным<br>
+                        Востоком.<br><br>
+                        Отсчёт ведётся от&nbsp;бросавшего<br>
+                        против часовой стрелки.</p>
+                </div>
+                <div class="number-right"><h2>03</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/4.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Сборка руки</h3>
+                    <p class="t-l-align">Игроки берут по&nbsp;4 тайла<br>из&nbsp;стены друг за&nbsp;другом и&nbsp;затем<br>по&nbsp;одному тайлу, добирая 13 в&nbsp;руке.</p>
+                </div>
+                <div class="number-right"><h2>04</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/5.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Диллер</h3>
+                    <p class="t-l-align">Восток (Диллер) берёт<br>14 тайл и&nbsp;начинает игру.</p>
+                </div>
+                <div class="number-right"><h2>05</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/6.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Ход игры</h3>
+                    <p class="t-l-align">Во время игры, каждый игрок берёт<br>1 тайл из&nbsp;стены и&nbsp;выбирает, от&nbsp;какого<br>тайла ему нужно избавиться.</p>
+                </div>
+                <div class="number-right"><h2>06</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/7.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Ход игры</h3>
+                    <p class="t-l-align">Игрок обязан каждый ход избавляться<br>от&nbsp;какого-то тайла. Это может быть<br>как тайл из&nbsp;уже имеющихся, так и&nbsp;новый.</p>
+                </div>
+                <div class="number-right"><h2>07</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/8.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Дискард</h3>
+                    <p class="t-l-align">Тайл, который игроку не&nbsp;нужен,<br>скидывается в&nbsp;центр стола.</p>
+                </div>
+                <div class="number-right"><h2>08</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/9.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Взятие</h3>
+                    <p class="t-l-align">Игрок может взять тайл из&nbsp;сброса другого<br>игрока, но&nbsp;только в&nbsp;момент самого сброса.<br>Взятие после уже будет невозможным.</p>
+                </div>
+                <div class="number-right"><h2>09</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vstack-card">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/10.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Объявление победы</h3>
+                    <p class="t-l-align">Победить можно ровно двумя способами,<br>они зависят от&nbsp;того, откуда игрок получил<br>победный тайл.</p>
+                </div>
+                <div class="number-right"><h2>10</h2></div>
+            </div>
+        </div>
+        </div>
+
+    </div><!-- /vstack-sticky -->
+</div><!-- /vstack-section -->
+
+<!-- Videos 11–14: "Ничья" — горизонтальное сжатие колонок -->
+<div class="vdraw-section" id="vdraw">
+    <div class="vdraw-sticky">
+
+        <div class="vdraw-col">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/11.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">Кончились<br>тайлы</h3>
+                    <p class="t-l-align vdraw-desc">Стена закончилась —&nbsp;все тайлы из&nbsp;живой части стены использованы.</p>
+                </div>
+                <div class="number-right"><h2>11</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vdraw-col">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/12.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">4 кана</h3>
+                    <p class="t-l-align vdraw-desc">После объявления 4 канов берётся последний тайл и&nbsp;партия заканчивается.</p>
+                </div>
+                <div class="number-right"><h2>12</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vdraw-col">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/13.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">4 риичи</h3>
+                    <p class="t-l-align vdraw-desc">Все четыре игрока объявили риичи одновременно.</p>
+                </div>
+                <div class="number-right"><h2>13</h2></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="vdraw-col">
+        <div class="video-container">
+            <video muted loop playsinline>
+                <source src="/video/video-numeration/14.mp4" type="video/mp4">
+            </video>
+            <div class="black-tint-video"></div>
+            <div class="video-content">
+                <div class="text-left">
+                    <h3 class="t-l-align">4 ветра</h3>
+                    <p class="t-l-align vdraw-desc">В&nbsp;первые 4 сброса все скидывают один и&nbsp;тот же ветер.</p>
+                </div>
+                <div class="number-right"><h2>14</h2></div>
+            </div>
+        </div>
+        </div>
+
+    </div><!-- /vdraw-sticky -->
+</div><!-- /vdraw-section -->
+<!-- подсчёт очков -->
+<div class="block-container p-b-100 m-b-0-block grn-bg-clr" id="section-score">
+<div class="padding-block-container">
+    <div class="block-container p-t-100">
+        <h3 class="t-l-align">подсчёт очков</h3>
+        <p>Очки считаются в&nbsp;зависимости от&nbsp;собранной комбинации,<br>
+        которые нужно знать, чтобы понимать стоимость руки.</p>
+        <p>Сначала объявляют название руки,<br>
+        а&nbsp;затем считают бонусные очки.</p>
+    </div>
+    <div class="block-container p-b-100 p-t-100">
+        <!-- Пример руки: 中中中 + 1-9 пин + пара -->
+        <div class="winhand sc-ready" style="flex-wrap:nowrap; overflow-x:auto;">
+
+            <div class="winhand-group">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+                </div>
+                <p class="winhand-label">тройка красных<br>драконов</p>
+            </div>
+
+            <div class="winhand-sep"></div>
+
+            <div class="winhand-group">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-1.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-2.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-3.png" class="winhand-tile">
+                </div>
+                <p class="winhand-label">последовательность</p>
+            </div>
+
+            <div class="winhand-sep"></div>
+
+            <div class="winhand-group">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-4.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-red-dora.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-6.png" class="winhand-tile">
+                </div>
+                <p class="winhand-label">красная дора</p>
+            </div>
+
+            <div class="winhand-sep"></div>
+
+            <div class="winhand-group">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-7.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-8.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-9.png" class="winhand-tile">
+                </div>
+                <p class="winhand-label">последовательность</p>
+            </div>
+
+            <div class="winhand-sep"></div>
+
+            <div class="winhand-group">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/wind-east.png" class="winhand-tile">
+                </div>
+                <p class="winhand-label">пара</p>
+            </div>
+
+        </div>
+        <p>Пример руки с&nbsp;последовательностью тайлов от&nbsp;1 до&nbsp;9 пин.</p>
+    </div>
+    <div class="block-container sc-ready">
+    <div class="block-container block-container-horizontal">
+        <div class="block-container">
+            <h3 class="t-l-align">Доп. очки</h3>
+            <br>
+            <div class="winhand-tiles">
+                <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+                <img src="img/tile-png-white-bg/dragon-red.png" class="winhand-tile">
+            </div>
+            <p class="m-b-25-block">Собранная тройка красного дракона</p>
+            <img src="img/sticks-001/stick-1000.png" width="75%">
+            <p class="m-b-25-block">Объявленное риичи</p>
+        </div>
+        <div class="block-container">
+            <h3 class="t-l-align">Яку</h3>
+            <br>
+            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px;">
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-1.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-2.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-3.png" class="winhand-tile">
+                </div>
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-4.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-5.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-6.png" class="winhand-tile">
+                </div>
+                <div class="winhand-tiles">
+                    <img src="img/tile-png-white-bg/pin-7.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-8.png" class="winhand-tile">
+                    <img src="img/tile-png-white-bg/pin-9.png" class="winhand-tile">
+                </div>
+            </div>
+            <br>
+            <p><strong>Иццу (一気通貫)</strong> — три последовательности<br>
+                1–2–3, 4–5–6, 7–8–9 одной масти.<br>
+                Даёт <strong>2 хана</strong> (закрытая рука).</p>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+<!-- футер -->
+<div class="block-container blk-bg-clr" id="footer">
+<div class="padding-block-container footer-inner">
+
+    <!-- Лого и соцсети -->
+    <div class="footer-logo-col">
+        <img src="img/logo-png/Logo-Rima-Main.png" class="logo-rima">
+        <img src="img/logo-png/VH-logo-gray.png" class="logo-vhutein">
+        <div class="footer-social">
+            <img src="img/logo-svg/vk-white.svg" class="s-media-icons" style="margin-left:0">
+            <img src="img/logo-svg/tg-white.svg" class="s-media-icons">
+        </div>
+    </div>
+
+    <!-- Ссылки по разделам -->
+    <nav class="footer-nav-cols">
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Маджонг</p>
+            <a href="/index.html#section-mahjong">Что такое маджонг</a>
+            <a href="/index.html#section-tile">Тайл</a>
+            <a href="/index.html#section-goal">Цель игры</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Правила</p>
+            <a href="/page-2.html#section-suits">Масти тайлов</a>
+            <a href="/page-2.html#section-basics">Рука и палочки</a>
+            <a href="/page-2.html#section-score">Подсчёт очков</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Таблица</p>
+            <a href="/page-3.html">Стоимость рук</a>
+            <a href="/constructor.html">Конструктор рук</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">В культуре</p>
+            <a href="/page-4.html#section-versions">Зарождение игры</a>
+            <a href="/page-4.html#section-yakuza">Маджонг в играх</a>
+            <a href="/page-4.html#section-akagi">Маджонг в аниме</a>
+            <a href="/page-4.html#section-kaiji">Кайдзи</a>
+        </div>
+    </nav>
+
+</div>
+</div>
+</div>
+<button class="back-to-top" type="button" aria-label="Наверх">↑</button>
+<script src="js/parallax.js"></script>
+<script src="js/back-to-top.js"></script>
+<script src="js/video-scroll.js"></script>
+<script src="js/dots-nav.js"></script>
+<script type="module" src="js/tiles-3d.js"></script>
+<script>
+/* ── Интерактивные примеры комбинаций: drag-out + клик + combo-detection ── */
+(function () {
+    const BASE = 'img/tile-png-white-bg/';
+
+    const SETS = {
+        toitsu: [
+            ['dragon-green',  'dragon-green'],
+            ['dragon-red',    'dragon-red'],
+            ['wind-east',     'wind-east'],
+            ['wind-north',    'wind-north'],
+            ['pin-5',         'pin-5'],
+            ['man-9',         'man-9'],
+            ['sou-1',         'sou-1'],
+            ['dragon-white',  'dragon-white'],
+        ],
+        chi: [
+            ['man-1',  'man-2',  'man-3'],
+            ['man-4',  'man-5',  'man-6'],
+            ['man-7',  'man-8',  'man-9'],
+            ['pin-1',  'pin-2',  'pin-3'],
+            ['pin-4',  'pin-5',  'pin-6'],
+            ['pin-7',  'pin-8',  'pin-9'],
+            ['sou-1',  'sou-2',  'sou-3'],
+            ['sou-4',  'sou-5',  'sou-6'],
+            ['sou-7',  'sou-8',  'sou-9'],
+        ],
+        pon: [
+            ['dragon-red',   'dragon-red',   'dragon-red'],
+            ['dragon-green', 'dragon-green', 'dragon-green'],
+            ['dragon-white', 'dragon-white', 'dragon-white'],
+            ['wind-east',    'wind-east',    'wind-east'],
+            ['wind-north',   'wind-north',   'wind-north'],
+            ['wind-south',   'wind-south',   'wind-south'],
+            ['wind-west',    'wind-west',    'wind-west'],
+            ['man-7',        'man-7',        'man-7'],
+            ['pin-3',        'pin-3',        'pin-3'],
+            ['sou-9',        'sou-9',        'sou-9'],
+        ],
+        kan: [
+            ['wind-east',    'wind-east',    'wind-east',    'wind-east'],
+            ['dragon-green', 'dragon-green', 'dragon-green', 'dragon-green'],
+            ['dragon-red',   'dragon-red',   'dragon-red',   'dragon-red'],
+            ['wind-north',   'wind-north',   'wind-north',   'wind-north'],
+            ['man-5',        'man-5',        'man-5',        'man-5'],
+            ['pin-1',        'pin-1',        'pin-1',        'pin-1'],
+            ['sou-9',        'sou-9',        'sou-9',        'sou-9'],
+        ],
+    };
+
+    const indices    = { toitsu: 0, chi: 0, pon: 0, kan: 0 };
+    const comboBlock = document.querySelector('.combo-block');
+    let   drag       = null;
+    const DRAG_THRESHOLD  = 6;    // px — порог клик vs drag
+    const COMBO_PROXIMITY = 170;  // px — макс. расстояние между центрами тайлов для детекции
+
+    /* ════════════════════════════════════════════
+       COMBO-DETECTION — распознавание чи / пон
+    ════════════════════════════════════════════ */
+    const placedTiles = [];   // { el, name }
+
+    /* Имя тайла из src: "img/tile-png-white-bg/man-1.png" → "man-1" */
+    function tileName(el) {
+        const m = el.src.match(/tile-png-white-bg\/(.+)\.png/);
+        return m ? m[1] : '';
+    }
+
+    /* Абсолютный центр placed-тайла (style.left/top — координаты документа) */
+    function tileCenter(el) {
+        const rect = el.getBoundingClientRect();
+        return {
+            x: parseFloat(el.style.left) + rect.width  / 2,
+            y: parseFloat(el.style.top)  + rect.height / 2,
+        };
+    }
+
+    function isChiSet(names) {
+        const p = names.map(n => { const m = n.match(/^(man|pin|sou)-(\d)$/); return m && { s: m[1], n: +m[2] }; });
+        if (p.some(x => !x) || p[0].s !== p[1].s || p[1].s !== p[2].s) return false;
+        const ns = p.map(x => x.n).sort((a,b)=>a-b);
+        return ns[1] === ns[0]+1 && ns[2] === ns[1]+1;
+    }
+
+    function isPonSet(names) {
+        return names[0] === names[1] && names[1] === names[2];
+    }
+
+    /* Показать метку и убрать тайлы */
+    function triggerCombo(trio, label) {
+        trio.forEach(t => { t.removing = true; t.el.style.pointerEvents = 'none'; });
+
+        const cs  = trio.map(t => tileCenter(t.el));
+        const cx  = cs.reduce((s,c) => s+c.x, 0) / 3;
+        const cy  = cs.reduce((s,c) => s+c.y, 0) / 3;
+
+        /* Подсветить тайлы */
+        trio.forEach(t => {
+            t.el.style.transition  = 'box-shadow 0.25s ease';
+            t.el.style.boxShadow   = '0 0 22px 6px rgba(160,160,160,0.7)';
+        });
+
+        /* Создать h3-метку */
+        const h3 = document.createElement('h3');
+        h3.textContent = label;
+        h3.style.cssText = `
+            position: absolute;
+            left: ${cx}px;
+            top:  ${cy}px;
+            transform: translate(-50%, -50%) scale(0.6);
+            margin: 0;
+            color: #22B14C;
+            -webkit-text-stroke: 2px #fff;
+            text-stroke: 2px #fff;
+            text-shadow: 0 0 18px rgba(34,177,76,0.9), 0 0 40px rgba(34,177,76,0.5);
+            font-size: 2.6rem;
+            pointer-events: none;
+            z-index: 10002;
+            opacity: 0;
+            transition: opacity 0.28s ease, transform 0.28s cubic-bezier(.2,0,.2,1.4);
+            white-space: nowrap;
+        `;
+        document.body.appendChild(h3);
+
+        /* Появление */
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            h3.style.opacity   = '1';
+            h3.style.transform = 'translate(-50%, -50%) scale(1)';
+        }));
+
+        /* Исчезновение */
+        setTimeout(() => {
+            h3.style.opacity   = '0';
+            h3.style.transform = 'translate(-50%, -50%) scale(1.2)';
+            trio.forEach(t => {
+                t.el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                t.el.style.opacity    = '0';
+                t.el.style.transform  = 'scale(0.5)';
+            });
+            setTimeout(() => {
+                h3.remove();
+                trio.forEach(t => {
+                    t.el.remove();
+                    const i = placedTiles.indexOf(t);
+                    if (i >= 0) placedTiles.splice(i, 1);
+                });
+                checkCombos(); // проверить, не сложились ли новые комбинации
+            }, 420);
+        }, 900);
+    }
+
+    function checkCombos() {
+        const active = placedTiles.filter(t => !t.removing && t.el.isConnected);
+        if (active.length < 3) return;
+
+        for (let i = 0; i < active.length - 2; i++) {
+            for (let j = i+1; j < active.length - 1; j++) {
+                for (let k = j+1; k < active.length; k++) {
+                    const trio = [active[i], active[j], active[k]];
+                    const cs   = trio.map(t => tileCenter(t.el));
+
+                    /* Все три близко друг к другу? */
+                    if (Math.hypot(cs[0].x-cs[1].x, cs[0].y-cs[1].y) > COMBO_PROXIMITY) continue;
+                    if (Math.hypot(cs[0].x-cs[2].x, cs[0].y-cs[2].y) > COMBO_PROXIMITY) continue;
+                    if (Math.hypot(cs[1].x-cs[2].x, cs[1].y-cs[2].y) > COMBO_PROXIMITY) continue;
+
+                    const names = trio.map(t => t.name);
+                    if (isPonSet(names)) { triggerCombo(trio, 'Пон'); return; }
+                    if (isChiSet(names)) { triggerCombo(trio, 'Чи');  return; }
+                }
+            }
+        }
+    }
+
+    /* ── Смена набора тайлов ── */
+    function cycleTiles(row) {
+        const type = row.dataset.combo;
+        const sets = SETS[type];
+        indices[type] = (indices[type] + 1) % sets.length;
+        const next = sets[indices[type]];
+        const tiles = row.querySelectorAll('.combo-tile');
+        tiles.forEach(t => t.classList.add('combo-tile--hidden'));
+        setTimeout(() => {
+            tiles.forEach((t, i) => { t.src = BASE + next[i] + '.png'; });
+            tiles.forEach(t => t.classList.remove('combo-tile--hidden'));
+        }, 180);
+    }
+
+    /* ── Bounce-анимация + смена (клик) ── */
+    function bounceAndCycle(row) {
+        row.querySelectorAll('.combo-tile').forEach(t => {
+            t.classList.remove('combo-tile--bounce');
+            void t.offsetWidth;
+            t.classList.add('combo-tile--bounce');
+        });
+        setTimeout(() => {
+            row.querySelectorAll('.combo-tile')
+               .forEach(t => t.classList.remove('combo-tile--bounce'));
+            cycleTiles(row);
+        }, 280);
+    }
+
+    /* ── Превратить клон в «осевший» тайл + зарегистрировать ── */
+    function settleClone(clone) {
+        const rot = (Math.random() - 0.5) * 22;
+        clone.style.transition    = 'transform 0.22s cubic-bezier(.2,0,.2,1.5), box-shadow 0.22s ease';
+        clone.style.transform     = `rotate(${rot}deg) scale(1)`;
+        clone.style.boxShadow     = '0 4px 14px rgba(0,0,0,0.28)';
+        clone.style.cursor        = 'grab';
+        clone.style.pointerEvents = 'auto';
+        clone.classList.add('combo-tile--placed');
+
+        /* Регистрируем тайл, если ещё не зарегистрирован */
+        if (!placedTiles.find(t => t.el === clone)) {
+            placedTiles.push({ el: clone, name: tileName(clone), removing: false });
+        }
+
+        /* Проверка после завершения анимации settle */
+        setTimeout(checkCombos, 260);
+    }
+
+    /* ══════════════════════════════════════════════
+       MOUSEDOWN — combo-тайл ИЛИ placed-тайл
+    ══════════════════════════════════════════════ */
+    document.addEventListener('mousedown', function (e) {
+        if (drag) return;
+
+        /* ── Placed-тайл ── */
+        const placed = e.target.closest('.combo-tile--placed');
+        if (placed) {
+            e.preventDefault();
+            drag = {
+                kind:   'placed',
+                el:     placed,
+                startX: e.clientX,
+                startY: e.clientY,
+                baseLeft: parseFloat(placed.style.left),
+                baseTop:  parseFloat(placed.style.top),
+                active: false,
+            };
+            return;
+        }
+
+        /* ── Combo-тайл ── */
+        const comboTile = e.target.closest('.combo-tile');
+        const comboRow  = e.target.closest('.combo-row[data-combo]');
+        if (!comboTile || !comboRow) return;
+        e.preventDefault();
+        const rect = comboTile.getBoundingClientRect();
+        drag = {
+            kind:   'combo',
+            row:    comboRow,
+            tile:   comboTile,
+            rect,
+            startX: e.clientX,
+            startY: e.clientY,
+            absLeft: rect.left + window.scrollX,
+            absTop:  rect.top  + window.scrollY,
+            clone:  null,
+            active: false,
+        };
+    });
+
+    /* ══════════════════════════════════════════════
+       MOUSEMOVE
+    ══════════════════════════════════════════════ */
+    document.addEventListener('mousemove', function (e) {
+        if (!drag) return;
+        const dx = e.clientX - drag.startX;
+        const dy = e.clientY - drag.startY;
+
+        /* ── Placed-тайл двигается напрямую ── */
+        if (drag.kind === 'placed') {
+            if (!drag.active && Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+            if (!drag.active) {
+                drag.active = true;
+                drag.el.style.transition = 'none';
+                drag.el.style.transform  = 'rotate(-3deg) scale(1.1)';
+                drag.el.style.boxShadow  = '0 10px 28px rgba(0,0,0,0.45)';
+                drag.el.style.cursor     = 'grabbing';
+                drag.el.style.zIndex     = '10000';
+            }
+            drag.el.style.left = (drag.baseLeft + dx) + 'px';
+            drag.el.style.top  = (drag.baseTop  + dy) + 'px';
+            return;
+        }
+
+        /* ── Combo-тайл: создаём клон при первом движении ── */
+        if (!drag.active && Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+        if (!drag.active) {
+            drag.active = true;
+            drag.tile.style.opacity = '0.2';
+            const clone = document.createElement('img');
+            clone.src = drag.tile.src;
+            clone.className = 'combo-tile-drag-clone';
+            clone.style.cssText = `
+                position: absolute;
+                z-index: 9999;
+                pointer-events: none;
+                height: ${drag.rect.height}px;
+                width:  auto;
+                left:   ${drag.absLeft}px;
+                top:    ${drag.absTop}px;
+                border-radius: 6px;
+                box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+                transform: rotate(-5deg) scale(1.08);
+                transform-origin: center center;
+            `;
+            document.body.appendChild(clone);
+            drag.clone = clone;
+        }
+        drag.clone.style.left = (drag.absLeft + dx) + 'px';
+        drag.clone.style.top  = (drag.absTop  + dy) + 'px';
+    });
+
+    /* ══════════════════════════════════════════════
+       MOUSEUP
+    ══════════════════════════════════════════════ */
+    document.addEventListener('mouseup', function (e) {
+        if (!drag) return;
+        const state = drag;
+        drag = null;
+
+        /* ── Placed-тайл отпущен ── */
+        if (state.kind === 'placed') {
+            if (!state.active) return; // клик — ничего не делаем
+            settleClone(state.el);     // settleClone сам вызовет checkCombos
+            state.el.style.zIndex = '9999';
+            return;
+        }
+
+        /* ── Combo-тайл: клик (drag не стартовал) ── */
+        if (!state.active) {
+            bounceAndCycle(state.row);
+            return;
+        }
+
+        /* ── Combo-тайл отпущен: внутри блока? ── */
+        state.tile.style.opacity = '1';
+        const br = comboBlock.getBoundingClientRect();
+        const inside = e.clientX >= br.left && e.clientX <= br.right &&
+                       e.clientY >= br.top  && e.clientY <= br.bottom;
+
+        if (inside) {
+            state.clone && state.clone.remove();
+            return;
+        }
+
+        /* За блоком — оставляем тайл на месте и меняем набор */
+        settleClone(state.clone);
+        cycleTiles(state.row);
+    });
+}());
+</script>
+
+<script>
+/* ── Анимация руки 13+1 + цикл хода (сброс → добор) ── */
+(function () {
+    var hr = document.querySelector('.handrow');
+    if (!hr) return;
+
+    var BASE = 'img/tile-png-white-bg/';
+    var ALL_TILES = [
+        'dragon-green','dragon-red','dragon-white',
+        'man-1','man-2','man-3','man-4','man-5','man-6','man-7','man-8','man-9',
+        'pin-1','pin-2','pin-3','pin-4','pin-5','pin-6','pin-7','pin-8','pin-9',
+        'sou-1','sou-2','sou-3','sou-4','sou-5','sou-6','sou-7','sou-8','sou-9',
+        'wind-east','wind-north','wind-south','wind-west'
+    ];
+
+    var STEP          = 0.055;   /* задержка между тайлами при появлении */
+    var TRANSITION_MS = 360;     /* длительность CSS-перехода */
+
+    var allTileEls = Array.from(hr.querySelectorAll('.handrow-tile'));
+    var drawnEl    = hr.querySelector('.handrow-tile--drawn');
+    var handEls    = allTileEls.filter(function (t) {
+        return !t.classList.contains('handrow-tile--drawn');
+    });
+
+    /* ── Начальная анимация появления ── */
+    hr.classList.add('hr-ready');
+    allTileEls.forEach(function (tile, i) {
+        tile.style.transitionDelay = (i * STEP).toFixed(3) + 's';
+    });
+
+    function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function randExcept(arr, excludeSrc) {
+        var current = excludeSrc.split('/').pop(); /* "man-3.png" */
+        var filtered = arr.filter(function (t) { return t + '.png' !== current; });
+        return rand(filtered.length ? filtered : arr);
+    }
+
+    /* ── Флаги состояния ── */
+    var isVisible   = false;
+    var isAnimating = false; /* true пока идёт анимация цикла */
+    var cycleTimer  = null;
+
+    var visibilityObserver = new IntersectionObserver(function (entries) {
+        isVisible = entries[0].isIntersecting;
+    }, { threshold: 0 });
+    visibilityObserver.observe(hr);
+
+    function scheduleNext(ms) {
+        cycleTimer = setTimeout(function () {
+            if (isVisible) {
+                runCycle();
+            } else {
+                /* Ждём пока блок снова не станет видимым */
+                var resumeCheck = setInterval(function () {
+                    if (isVisible) {
+                        clearInterval(resumeCheck);
+                        runCycle();
+                    }
+                }, 300);
+            }
+        }, ms);
+    }
+
+    /* ── Один цикл хода ── */
+    function runCycle(targetTile) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        var isManual = !!targetTile;
+        var tile = targetTile || rand(handEls);
+
+        /* 1. Выбранный тайл вылетает вверх */
+        tile.style.transitionDelay = '0s';
+        tile.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+        tile.style.opacity   = '0';
+        tile.style.transform = 'translateY(-44px)';
+
+        setTimeout(function () {
+            /* 2. На место выброшенного встаёт тайл из стены (снизу) */
+            tile.src = drawnEl.src;
+            tile.style.transition = 'none';
+            tile.style.transform  = 'translateY(24px)';
+            tile.style.opacity    = '0';
+            void tile.offsetHeight; /* reflow */
+            tile.style.transition = 'opacity 0.32s ease, transform 0.32s ease';
+            tile.style.opacity    = '1';
+            tile.style.transform  = 'translateY(0)';
+
+            /* 3. Тайл из стены уходит */
+            drawnEl.style.transitionDelay = '0s';
+            drawnEl.style.transition = 'opacity 0.22s ease';
+            drawnEl.style.opacity    = '0';
+
+            setTimeout(function () {
+                /* 4. Новый тайл появляется на месте «из стены» (сверху) */
+                drawnEl.src = BASE + randExcept(ALL_TILES, drawnEl.src) + '.png';
+                drawnEl.style.transition = 'none';
+                drawnEl.style.transform  = 'translateY(-24px)';
+                drawnEl.style.opacity    = '0';
+                void drawnEl.offsetHeight;
+                drawnEl.style.transition = 'opacity 0.32s ease, transform 0.32s ease';
+                drawnEl.style.opacity    = '1';
+                drawnEl.style.transform  = 'translateY(0)';
+
+                isAnimating = false;
+
+                /* 5. Пауза — и снова (только если блок виден) */
+                scheduleNext(isManual ? 2500 : 1800);
+            }, 380);
+        }, 430);
+    }
+
+    /* ── Drag-and-drop тайла из стены ── */
+    (function () {
+        var DRAG_THRESHOLD = 6; /* px до начала drag */
+        var isDragging     = false;
+        var dragClone      = null;
+        var startX = 0, startY = 0;
+        var offsetX = 0, offsetY = 0;
+        var hoveredHandTile = null;
+
+        function getCenter(el) {
+            var r = el.getBoundingClientRect();
+            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+        }
+
+        function startDrag(e) {
+            var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            /* скрываем оригинал и создаём клон */
+            var rect = drawnEl.getBoundingClientRect();
+            offsetX = clientX - rect.left;
+            offsetY = clientY - rect.top;
+
+            dragClone = drawnEl.cloneNode(true);
+            dragClone.style.cssText = [
+                'position:fixed',
+                'left:' + (clientX - offsetX) + 'px',
+                'top:'  + (clientY - offsetY) + 'px',
+                'width:' + rect.width + 'px',
+                'height:' + rect.height + 'px',
+                'pointer-events:none',
+                'z-index:9999',
+                'border-radius:4px',
+                'box-shadow:0 8px 24px rgba(0,0,0,0.6)',
+                'opacity:1',
+                'transition:none',
+                'cursor:grabbing'
+            ].join(';');
+            document.body.appendChild(dragClone);
+
+            drawnEl.style.opacity = '0.25';
+            clearTimeout(cycleTimer);
+            isDragging = true;
+        }
+
+        function moveDrag(e) {
+            if (!isDragging) return;
+            var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            dragClone.style.left = (clientX - offsetX) + 'px';
+            dragClone.style.top  = (clientY - offsetY) + 'px';
+
+            /* определяем, над каким тайлом руки находимся */
+            dragClone.style.display = 'none';
+            var elUnder = document.elementFromPoint(clientX, clientY);
+            dragClone.style.display = '';
+
+            var found = handEls.find(function (t) { return t === elUnder; }) || null;
+
+            if (found !== hoveredHandTile) {
+                if (hoveredHandTile) {
+                    hoveredHandTile.style.transform = '';
+                }
+                hoveredHandTile = found;
+                if (hoveredHandTile) {
+                    hoveredHandTile.style.transform = 'translateY(-6px)';
+                    hoveredHandTile.style.transition = 'transform 0.15s ease';
+                }
+            }
+        }
+
+        function endDrag(e) {
+            if (!isDragging) return;
+            isDragging = false;
+
+            var clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+            var clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
+
+            /* убираем подсветку */
+            if (hoveredHandTile) {
+                hoveredHandTile.style.transform = '';
+            }
+
+            var target = hoveredHandTile;
+            hoveredHandTile = null;
+
+            if (target) {
+                /* ── Успешный дроп: заменяем тайл в руке ── */
+                var drawnSrc = drawnEl.src;
+
+                /* клон улетает на место целевого тайла */
+                var tRect = target.getBoundingClientRect();
+                dragClone.style.transition = 'left 0.22s ease, top 0.22s ease, opacity 0.22s ease';
+                dragClone.style.left = tRect.left + 'px';
+                dragClone.style.top  = tRect.top  + 'px';
+
+                setTimeout(function () {
+                    if (dragClone) { document.body.removeChild(dragClone); dragClone = null; }
+
+                    /* целевой тайл получает src drawn-тайла, вылетает снизу */
+                    target.style.transition = 'none';
+                    target.style.transform  = 'translateY(20px)';
+                    target.style.opacity    = '0';
+                    void target.offsetHeight;
+                    target.style.transition = 'opacity 0.30s ease, transform 0.30s ease';
+                    target.style.opacity    = '1';
+                    target.style.transform  = 'translateY(0)';
+                    target.src = drawnSrc;
+
+                    /* drawn-тайл: новый тайл появляется сверху */
+                    drawnEl.style.transition = 'none';
+                    drawnEl.style.transform  = 'translateY(-24px)';
+                    drawnEl.style.opacity    = '0';
+                    void drawnEl.offsetHeight;
+                    drawnEl.src = BASE + randExcept(ALL_TILES, drawnSrc) + '.png';
+                    drawnEl.style.transition = 'opacity 0.32s ease, transform 0.32s ease';
+                    drawnEl.style.opacity    = '1';
+                    drawnEl.style.transform  = 'translateY(0)';
+
+                    scheduleNext(2500);
+                }, 240);
+
+            } else {
+                /* ── Отмена: клон возвращается на место drawn-тайла ── */
+                var dRect = drawnEl.getBoundingClientRect();
+                dragClone.style.transition = 'left 0.28s ease, top 0.28s ease, opacity 0.28s ease';
+                dragClone.style.left    = dRect.left + 'px';
+                dragClone.style.top     = dRect.top  + 'px';
+
+                setTimeout(function () {
+                    if (dragClone) { document.body.removeChild(dragClone); dragClone = null; }
+                    drawnEl.style.opacity = '1';
+                    scheduleNext(2000);
+                }, 300);
+            }
+        }
+
+        /* mousedown: начинаем отслеживать — drag стартует при движении > порога */
+        drawnEl.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            startX = e.clientX;
+            startY = e.clientY;
+            var moved = false;
+
+            function onMove(ev) {
+                if (!moved && Math.hypot(ev.clientX - startX, ev.clientY - startY) > DRAG_THRESHOLD) {
+                    moved = true;
+                    startDrag(ev);
+                }
+                if (moved) moveDrag(ev);
+            }
+            function onUp(ev) {
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup',   onUp);
+                if (moved) {
+                    endDrag(ev);
+                } else {
+                    /* просто клик — ничего не делаем */
+                }
+            }
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup',   onUp);
+        });
+
+        /* touch-события */
+        drawnEl.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            var t0 = e.touches[0];
+            startX = t0.clientX;
+            startY = t0.clientY;
+            var moved = false;
+
+            function onMove(ev) {
+                if (!moved && Math.hypot(ev.touches[0].clientX - startX, ev.touches[0].clientY - startY) > DRAG_THRESHOLD) {
+                    moved = true;
+                    startDrag(ev);
+                }
+                if (moved) moveDrag(ev);
+            }
+            function onEnd(ev) {
+                drawnEl.removeEventListener('touchmove', onMove);
+                drawnEl.removeEventListener('touchend',  onEnd);
+                if (moved) endDrag(ev);
+            }
+            drawnEl.addEventListener('touchmove', onMove, { passive: false });
+            drawnEl.addEventListener('touchend',  onEnd);
+        }, { passive: false });
+
+        /* курсор — подсказка что можно тянуть */
+        drawnEl.style.cursor = 'grab';
+
+        /* ── Клик по тайлу из стены: сброс, новый тайл ── */
+        drawnEl.addEventListener('click', function () {
+            if (isDragging || isAnimating) return;
+
+            clearTimeout(cycleTimer);
+
+            var oldSrc = drawnEl.src;
+            isAnimating = true;
+
+            drawnEl.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+            drawnEl.style.transform  = 'translateY(-36px)';
+            drawnEl.style.opacity    = '0';
+
+            setTimeout(function () {
+                drawnEl.src = BASE + randExcept(ALL_TILES, oldSrc) + '.png';
+                drawnEl.style.transition = 'none';
+                drawnEl.style.transform  = 'translateY(-24px)';
+                drawnEl.style.opacity    = '0';
+                void drawnEl.offsetHeight;
+                drawnEl.style.transition = 'opacity 0.32s ease, transform 0.32s ease';
+                drawnEl.style.opacity    = '1';
+                drawnEl.style.transform  = 'translateY(0)';
+
+                isAnimating = false;
+                scheduleNext(2500);
+            }, 300);
+        });
+
+        /* ── Клик по тайлу руки: заменить его на drawn-тайл ── */
+        handEls.forEach(function (tile) {
+            tile.style.cursor = 'pointer';
+
+            tile.addEventListener('mouseenter', function () {
+                tile.style.transition = 'transform 0.15s ease';
+                tile.style.transform  = 'translateY(-6px)';
+            });
+            tile.addEventListener('mouseleave', function () {
+                tile.style.transition = 'transform 0.15s ease';
+                tile.style.transform  = '';
+            });
+
+            tile.addEventListener('click', function () {
+                /* если сейчас идёт drag или анимация — игнорируем */
+                if (isDragging || isAnimating) return;
+
+                clearTimeout(cycleTimer);
+                runCycle(tile);
+            });
+        });
+    }());
+
+    /* ── Запуск через IntersectionObserver ── */
+    var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+            hr.classList.add('hr-animate');
+            observer.disconnect();
+
+            /* Стартуем цикл после окончания начальной анимации */
+            var initMs = (allTileEls.length - 1) * STEP * 1000 + TRANSITION_MS + 900;
+            setTimeout(function () {
+                allTileEls.forEach(function (t) { t.style.transitionDelay = '0s'; });
+                runCycle();
+            }, initMs);
+        }
+    }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+
+    observer.observe(hr);
+}());
+
+/* ── Анимация комбо-блока: строки вылетают слева при скролле ── */
+(function () {
+    var cb = document.querySelector('.combo-block');
+    if (!cb) return;
+
+    var rows = Array.from(cb.querySelectorAll('.combo-row'));
+    var STEP = 0.14;
+
+    cb.classList.add('cb-ready');
+
+    rows.forEach(function (row, i) {
+        row.style.transitionDelay = (i * STEP).toFixed(2) + 's';
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+            cb.classList.add('cb-animate');
+            observer.disconnect();
+        }
+    }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+
+    observer.observe(cb);
+}());
+
+/* ── Анимация палочек: вылет слева при скролле ── */
+(function () {
+    var sl = document.querySelector('.stick-list');
+    if (!sl) return;
+
+    var rows = Array.from(sl.querySelectorAll('.stick-row'));
+    var STEP = 0.12;        /* секунд между строками */
+    var LABEL_AFTER = 0.12; /* подпись чуть позже самой палочки */
+
+    sl.classList.add('sl-ready');
+
+    rows.forEach(function (row, i) {
+        var stick = row.querySelector('.stick-block');
+        var label = row.querySelector('.stick-label');
+        if (stick) stick.style.transitionDelay = (i * STEP).toFixed(2) + 's';
+        if (label) label.style.transitionDelay = (i * STEP + LABEL_AFTER).toFixed(2) + 's';
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+            sl.classList.add('sl-animate');
+            observer.disconnect();
+        }
+    }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+
+    observer.observe(sl);
+}());
+
+/* ── Анимация появления победной руки при скролле ── */
+(function () {
+    var wh = document.querySelector('.winhand');
+    if (!wh) return;
+
+    var tiles  = Array.from(wh.querySelectorAll('.winhand-tile'));
+    var labels = Array.from(wh.querySelectorAll('.winhand-label'));
+
+    /* Считаем количество тайлов в каждой группе, чтобы подпись
+       появлялась после того, как упал последний тайл группы */
+    var groups = Array.from(wh.querySelectorAll('.winhand-group'));
+    var tileCounts = groups.map(function (g) {
+        return g.querySelectorAll('.winhand-tile').length;
+    });
+
+    var STEP = 0.08;   /* секунд между тайлами */
+    var LABEL_AFTER = 0.16; /* задержка подписи после последнего тайла группы */
+
+    /* Скрываем сразу — безопасно для no-JS */
+    wh.classList.add('wh-ready');
+
+    /* Назначаем индивидуальные задержки тайлам */
+    tiles.forEach(function (tile, i) {
+        tile.style.transitionDelay = (i * STEP).toFixed(2) + 's';
+    });
+
+    /* Назначаем задержки подписям: каждая ждёт последнего тайла своей группы */
+    var offset = 0;
+    labels.forEach(function (label, i) {
+        offset += tileCounts[i];
+        var delay = (offset - 1) * STEP + LABEL_AFTER;
+        label.style.transitionDelay = delay.toFixed(2) + 's';
+    });
+
+    /* Запускаем анимацию при попадании блока в viewport */
+    var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+            wh.classList.add('wh-animate');
+            observer.disconnect();
+        }
+    }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+
+    observer.observe(wh);
+}());
+</script>
+
+<script>
+/* ── Анимация тайлов в блоке «Подсчёт очков» при скролле ─────────────────── */
+(function () {
+    var STEP = 0.06;   /* секунд между тайлами */
+
+    Array.from(document.querySelectorAll('.sc-ready')).forEach(function (wrap) {
+        /* Назначаем задержки всем тайлам и подписям внутри контейнера */
+        var els = Array.from(wrap.querySelectorAll('.winhand-tile, .winhand-label'));
+        els.forEach(function (el, i) {
+            el.style.transitionDelay = (i * STEP).toFixed(2) + 's';
+        });
+
+        var obs = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+                wrap.classList.add('sc-animate');
+                obs.disconnect();
+            }
+        }, { threshold: 0, rootMargin: '0px 0px -20% 0px' });
+
+        obs.observe(wrap);
+    });
+}());
+</script>
+
+<script src="js/tile-tooltip.js"></script>
+</body>
+</html>

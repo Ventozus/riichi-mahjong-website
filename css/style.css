@@ -1,0 +1,2787 @@
+:root {
+    --main-black: #000;
+    --main-color: #22B14C;
+    --secondary-color: #90CC6E;
+    --thirdary-color: #AAE588;
+    --gray-text-1: #6a6a6a;
+    --gray-text-2: #e3e3e3;
+    --main-padding: 0px 96px;
+    --block-padding: 2px 12px;
+    --main-gap: 12px;
+    --main-stroke-weight: 3px;
+    /* Длительность анимации */
+    --transition-duration: 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Высота body = высоте экрана */
+    background-size: contain;
+    background-color: #C3C3C3;
+    background-attachment: fixed;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    overflow-x: hidden;
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%,
+        rgba(255, 255, 255, 0.16) 0%,
+        transparent 70%
+    );
+    z-index: -9999;
+    pointer-events: none;
+}
+
+div {
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    /* Стиль для дива, чтобы видеть форму блока */
+}
+
+
+
+/* Ventoza progressive */
+
+@font-face {
+    /* Ventoza progressive */
+    font-family: 'ventoza-progressive';
+    src: url('fonts/progressive/Ventozaprogressive-Semi-bold.otf');
+    font-weight: 150;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza progressive */
+    font-family: 'ventoza-progressive';
+    src: url('fonts/progressive/Ventozaprogressive-Regular.otf');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza progressive */
+    font-family: 'ventoza-progressive';
+    src: url('fonts/progressive/Ventozaprogressive-Light.otf');
+    font-weight: 50;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+/* Ventoza berense italic */
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Bolditalic.otf');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Semi-bolditalic.otf');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Regularitalic.otf');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Lightitalic.otf');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+
+/* Ventoza berense */
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Bold.otf');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Semi-bold.otf');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Regular.otf');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Ventoza berense */
+    font-family: 'ventoza-berense';
+    src: url('fonts/berense/Ventozaberense-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+/* Gen Shin */
+
+@font-face {
+    /* Gen Shin Bold */
+    font-family: 'gen-shin-bold';
+    src: url('fonts/Gen Shin/Gen Shin Gothic Bold.ttf');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    /* Gen Shin Heavy */
+    font-family: 'gen-shin-heavy';
+    src: url('fonts/Gen Shin/Gen Shin Gothic Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+.padding-block-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    min-height: 48px;
+    gap: var(--main-gap);
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+.no-padding-block-container {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: var(--block-padding);
+    min-height: 48px;
+    gap: var(--main-gap);
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+.block-container {
+    position: relative;
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 12px;
+    gap: var(--main-gap);
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+.block-container-horizontal {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 12px;
+    gap: var(--main-gap);
+    box-sizing: border-box; /* Учитываем padding в ширину */
+    align-items: flex-start; /* <-- добавляем - элементы не растягиваются по высоте */
+}
+
+.block-cards-main {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    background-color: var(--gray-text-1);
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+
+    cursor: pointer; /* Меняет курсор на "пальчик" */
+    transition: transform 0.3s ease-out, filter 0.3s ease-out, box-shadow 0.3s ease-out;    
+    will-change: transform; /* Подсказка браузеру для плавной анимации */
+}
+
+.block-cards-main:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+/* Эффект при клике (нажатии) */
+.block-cards-main:active {
+    transform: scale(1.01);
+}
+
+.m-b-100-block {
+    margin-bottom: 200px;
+}
+
+.m-b-50-block {
+    margin-bottom: 100px;
+}
+
+.m-b-25-block {
+    margin-bottom: 50px;
+}
+
+.m-b-12-block {
+    margin-bottom: 25px;
+}
+
+.m-b-0-block {
+    margin-bottom: 0px;
+}
+
+.m-t-50-block {
+    margin-top: 50px;
+}
+
+.m-t-100-block {
+    margin-top: 100px;
+}
+
+.p-t-100 {
+    padding-top: 100px;
+}
+
+.p-b-50 {
+    padding-bottom: 50px;
+}
+
+.p-b-100 {
+    padding-bottom: 100px;
+}
+
+.p-b-150 {
+    padding-bottom: 150px;
+}
+
+.p-b-200 {
+    padding-bottom: 200px;
+}
+
+.block-container-horizontal .square {
+    flex: 0 0 auto; /* сокращенная запись: flex-grow, flex-shrink, flex-basis */
+}
+
+.square {
+    width: 110px; /* или любой другой размер */
+    aspect-ratio: 1 / 1; /* сохраняет квадратную форму */
+    border: var(--main-stroke-weight) solid var(--main-black); /* черная обводка 2px */
+    background-color: transparent; /* без заливки */
+    box-sizing: border-box; /* обводка внутри размера */
+    align-items: center;
+    margin: 8px 0px;
+    display: flex;
+    align-items: center;  /* вертикальное центрирование */
+    justify-content: center;  /* горизонтальное центрирование */
+}
+
+.square h2 {
+    font-size: 64px;
+}
+
+.block-horizontal-align {
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    gap: var(--main-gap);
+}
+
+.items-r-align {
+    display: flex;
+    justify-content: flex-end; /* выравнивание по правой стороне */
+}
+
+.items-l-align {
+    display: flex;
+    justify-content: flex-start; /* выравнивание по правой стороне */
+}
+
+.items-b-align {
+    display: flex;
+    align-items: flex-end; /* выравнивание по правой стороне */
+}
+
+.items-c-align {
+    display: flex;
+    justify-content: center; /* по горизонтали */
+    align-items: center;     /* по вертикали */
+}
+
+.items-c-v-align {
+    display: flex;
+    align-items: center;     /* по вертикали */
+}
+
+.image-container {
+    position: relative;
+    width: min(300px, 30vw);  /* адаптивная ширина */
+    height: min(200px, 20vw);  /* адаптивная высота */
+    overflow: visible;
+    margin: 40px;
+}
+
+.image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(500px, 50vw);   /* адаптивный размер картинки */
+    height: auto;
+    max-width: none;            /* убираем ограничение max-width */
+}
+
+.absolute-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* центрирование по горизонтали */
+    align-items: center;     /* центрирование по вертикали */
+    pointer-events: none;    /* чтобы картинка не мешала кликать по тексту */
+}
+
+.z3 {
+    z-index: 3;
+}
+
+.z2 {
+    z-index: 2;
+}
+
+.z1 {
+    z-index: 1;
+}
+
+.z0 {
+    z-index: 0;
+}
+
+.z-1 {
+    z-index: -1;
+}
+
+.z-2 {
+    z-index: -2;
+}
+
+.z-3 {
+    z-index: -3;
+}
+
+.z-4 {
+    z-index: -4;
+}
+
+.z-5 {
+    z-index: -5;
+}
+
+.z-6 {
+    z-index: -6;
+}
+
+.z-7 {
+    z-index: -7;
+}
+
+.z-8 {
+    z-index: -8;
+}
+
+.z-9 {
+    z-index: -9;
+}
+
+.z-10 {
+    z-index: -10;
+}
+
+.gradient-block {
+    background: linear-gradient(to bottom, #3f3f3f, var(--main-black));
+    width: fit-content;
+    /* было 2px снизу — текст визуально упирался в край; отступ считается от border-box */
+    padding: 10px 32px 8px 32px;
+    margin: 4px;
+    outline: 1px solid #555555;
+    box-sizing: border-box;
+}
+
+.gradient-block h3 {
+    color: white !important; 
+    font-weight: 600;
+    /* запас под выносные элементы шрифта (descenders), без лишнего отступа снизу блока */
+    line-height: 1.12;
+    padding-bottom: 2px;
+}
+
+.grey-block {
+    background-color: #757575;
+    width: fit-content;
+    padding: 1px 24px 1px 24px;
+    margin: 4px;
+}
+
+.grey-block p {
+    color: white !important;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--main-black);
+    z-index: 1000;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 0px;
+    
+    /* Добавляем плавный переход */
+    transition: transform 0.3s ease;
+}
+
+/* Скрытое состояние (будет управляться через JS) */
+#header.hidden {
+    transform: translate(-50%, -100px);
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* Стили для навигации */
+.header-nav {
+    display: flex;
+    gap: 48px;
+    background-color: transparent;
+}
+
+.header-nav a {
+    font-size: 12px;
+}
+
+.header-nav a {
+    color: var(--gray-text-1);
+    text-decoration: none;
+    font-family: 'ventoza-progressive', sans-serif;
+    transition: color var(--transition-duration);
+    background-color: transparent;
+}
+
+.header-nav a:hover {
+    color: var(--main-color);
+}
+
+#footer {
+    border-radius: 8px 8px 0px 0px;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: hidden; /* предотвращает margin-collapse дочерних элементов */
+}
+
+/* ── Footer: внутренний layout ──────────────────────────── */
+.footer-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 44px 0 40px;
+    min-height: unset;
+}
+
+/* Колонка с логотипами и соцсетями */
+.footer-logo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    flex: 0 0 auto;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+}
+
+/* Блок с навигационными колонками */
+.footer-nav-cols {
+    display: flex;
+    gap: 40px;
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    padding-top: 4px;
+}
+
+.footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 120px;
+}
+
+/* Заголовок колонки */
+.footer-nav-col__title {
+    color: var(--gray-text-2) !important;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-weight: 150;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+}
+
+/* Ссылки в колонке */
+.footer-nav-col a {
+    color: var(--gray-text-1);
+    text-decoration: none;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+    line-height: 1.4;
+}
+
+.footer-nav-col a:hover {
+    color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 28px;
+        padding: 28px 16px 24px;
+    }
+    .footer-nav-cols {
+        gap: 24px;
+    }
+}
+
+h1, h2, h3 {
+    font-family: ventoza-berense;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 100px;
+    text-align: center;
+    line-height: 90px;
+}
+
+h2 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 72px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+h3 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+h4 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+h5 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.hh, .hh2 {
+    font-family: gen-shin-bold;
+    color: var(--main-black);
+    line-height: 76px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.hh {
+    font-size: 70px;
+}
+
+.hh2 {
+    font-size: 44px;
+}
+
+.hc {
+    position: absolute;
+    font-size: 24px;
+    margin: 8px 12px;
+}
+
+p {
+  font-family: ventoza-progressive;
+  color: var(--gray-text-1);
+  font-size: 16px;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.t-l-align {
+    text-align: left;
+}
+
+.gradient-block .t-l-align {
+    margin-left: -16px;
+}
+
+.t-c-align {
+    text-align: center;
+}
+
+.t-r-align {
+    text-align: right;
+}
+
+.grn-bg-clr {
+    background-color: #AAE687;
+}
+
+.grn-bg-clr p {
+ color: var(--main-black);
+}
+
+.blk-bg-clr {
+    background-color: var(--main-black);
+}
+
+.blk-bg-clr h2 {
+    color: var(--gray-text-2);
+}
+
+.blk-bg-clr h3 {
+    color: var(--gray-text-1);
+}
+
+.blk-bg-clr p {
+    color: var(--gray-text-1);
+}
+
+.blk-bg-clr .hh {
+    color: var(--gray-text-1);
+}
+
+.blk-bg-clr .square {
+    border: var(--main-stroke-weight) solid var(--gray-text-2); /* черная обводка 2px */
+}
+
+.grn-p-18 {
+    padding: 18px;
+    background-color: #22B14C;
+    border-radius: 8px;
+}
+
+.max-width-800 {
+    max-width: 800px;
+}
+
+.stick-block {
+    width: auto;
+    height: 100%;
+}
+
+/* ── Секция палочек для счёта ── */
+.stick-section {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+/* Колонка с палочками — занимает всё свободное место */
+.stick-list {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stick-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Палочка растягивается на всю строку минус метка */
+.stick-row .stick-block {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Фиксированная ширина метки — «10000» самая широкая */
+.stick-label {
+    flex: 0 0 60px;
+    margin: 0;
+    text-align: left;
+}
+
+/* Колонка с текстом — фиксированная ширина справа */
+.stick-text {
+    flex: 0 0 400px;
+}
+
+.logo-rima {
+    padding: 0;
+    width: 72px;
+    object-fit: contain;
+    margin-bottom: 16px;
+}
+
+.logo-rima-header {
+    padding: 20px;
+    width: 72px;
+    object-fit: contain;
+}
+
+.logo-vhutein {
+    padding: 0;
+    width: 120px;
+    object-fit: contain;
+}
+
+.s-media-icons {
+    width: 30px;
+    margin-left: 12px;
+    object-fit: contain;
+}
+
+.table-card {
+    position: absolute;
+    width: 500px;
+    aspect-ratio: 1 / 1; /* сохраняет квадратную форму */
+    left: -100px;
+}
+
+.g-star-002 {
+    position: absolute;
+    top: 0px;
+}
+
+.g-star-003 {
+    position: absolute;
+    top: 20px;
+    width: 220px;
+}
+
+.score-02 {
+    position: absolute;
+    width: 205px;
+    height: 460px;
+    top: 10px;
+}
+
+#banner-01-tiles-render-001 {
+    position: absolute;
+    left: 175px;
+}
+
+#banner-01-stick-001 {
+    position: absolute;
+    left: 200px;
+    top: 290px;
+}
+
+#banner-01-tile-pin-03-001 {
+    position: absolute;
+    left: 770px;
+    top: 235px;
+}
+
+#banner-01-tile-red-001 {
+    position: absolute;
+    left: 525px;
+    top: 50px;
+}
+
+#banner-01-tile-sou-01-001 {
+    position: absolute;
+    left: 360px;
+    top: 120px;
+}
+
+#banner-01-tile-white-001 {
+    position: absolute;
+    left: 320px;
+    top: 320px;
+}
+
+#banner-01-tile-white-002 {
+    position: absolute;
+    left: 530px;
+    top: 370px;
+}
+
+#banner-01-tile-white-003 {
+    position: absolute;
+    left: 620px;
+    top: 390px;
+}
+
+#g-star-004 {
+    position: absolute;
+    left: 360px;
+    top: -10px;
+}
+
+#TROG-table-01 {
+    position: absolute;
+    width: max(130vw, 1400px);
+    max-width: none !important;
+    left: calc(50% - 900px);
+    top: 250px;
+    height: auto;
+}
+
+#TROG-tiles-01_1 {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 320px;
+}
+
+#TROG-tiles-01 {
+    position: absolute;
+    width: 70%;
+    height: auto;
+    left: -200px;
+    top: 470px;
+}
+
+#TROG-tanuki-01 {
+    position: absolute;
+    height: auto;
+    top: -50px;
+    left: 500px;
+}
+
+#TROG-tail-01 {
+    position: absolute;
+    height: auto;
+    top: 330px;
+    left: 850px;
+}
+
+#TROG-tile-hand-01 {
+    position: absolute;
+    height: auto;
+    top: 70px;
+    left: 360px;
+}
+
+#TROG-hand-01 {
+    position: absolute;
+    height: auto;
+    top: 170px;
+    left: 480px;
+}
+
+#akagi-parallax-01, #akagi-parallax-02, #akagi-parallax-03, #akagi-parallax-bg {
+    position: absolute;
+    height: auto;
+    left: 100px;
+}
+
+#akagi-parallax-bg {
+    left: 200px;
+}
+
+.akagi-overlay-wrap {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+@keyframes spinCW {
+    from { rotate: 0deg; }
+    to   { rotate: 360deg; }
+}
+
+.akagi-light-03 {
+    display: block;
+    animation: spinCW 18s linear infinite;
+}
+
+@keyframes pinSway {
+    0%, 100% { rotate: 25deg; }
+    50%       { rotate: 35deg; }
+}
+
+@keyframes pinShake {
+    0%        { rotate: 30deg; scale: 1; }
+    10%       { scale: 1.12; }
+    20%       { rotate: 42deg; }
+    40%       { rotate: 18deg; }
+    60%       { rotate: 40deg; }
+    80%       { rotate: 20deg; }
+    100%      { rotate: 30deg; scale: 1; }
+}
+
+.akagi-1-pin-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 13%;
+    z-index: 1;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+}
+
+.akagi-1-pin-wrap:hover {
+    scale: 1.15;
+}
+
+.akagi-1-pin-wrap.is-shaking .akagi-1-pin {
+    animation: pinShake 0.45s ease-in-out;
+}
+
+.akagi-1-pin {
+    display: block;
+    width: 100%;
+    animation: pinSway 3s ease-in-out infinite;
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* анимации */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.star-anim-rotate-01 {
+    animation: spin 60s linear infinite;
+    image-rendering: crisp-edges;
+}
+
+/* Page 03: yaku table */
+.yaku-page-title p {
+    margin-top: 12px;
+    color: #4b4b4b;
+    
+}
+
+.yaku-banner-placeholder {
+    min-height: 220px;
+    border: 1px dashed #202020;
+    border-radius: 8px;
+    background-color: #b9b9b9;
+}
+
+.yaku-round-goal-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    margin-bottom: 32px;
+}
+
+.yaku-round-goal-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 84px;
+    padding-bottom: 84px;
+    max-width: 900px;
+}
+
+.yaku-round-goal-content p {
+    max-width: 760px;
+    margin: 20px auto 0;
+}
+
+.yaku-round-goal-content a {
+    color: #b9b9b9;
+    text-decoration: none;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-weight: 150;
+    transition: color 0.2s ease;
+}
+
+.yaku-round-goal-content a:hover {
+    color: var(--main-color);
+}
+
+.yaku-round-goal-star-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 780px;
+    height: 780px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.yaku-round-goal-star {
+    width: 100%;
+    height: auto;
+    opacity: 0.65;
+}
+
+.yaku-main-wrapper {
+    padding-bottom: 140px;
+}
+
+.yaku-table-section-title {
+    margin-bottom: 16px;
+}
+
+.yaku-table-shell {
+    border: 1px solid var(--main-black);
+    border-radius: 8px;
+    background-color: #d7d7d7;
+    padding: 20px 16px 24px 16px;
+}
+
+.yaku-table-head {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr 1fr 0.55fr;
+    gap: 16px;
+    padding: 0 12px 10px 12px;
+    border-bottom: 1px solid var(--main-black);
+    margin-bottom: 14px;
+}
+
+.yaku-table-head div {
+    font-family: 'ventoza-progressive', sans-serif;
+    color: var(--main-black);
+    font-weight: 150;
+    letter-spacing: 0;
+}
+
+.yaku-table-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.yaku-row {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr 1fr 0.55fr;
+    gap: 16px;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 14px 12px;
+    transition: opacity 0.24s ease, transform 0.24s ease, filter 0.24s ease, background-color 0.24s ease;
+    will-change: opacity, transform;
+}
+
+.yaku-row:hover {
+    transform: scale(1.015);
+    background-color: rgba(255, 255, 255, 0.62);
+}
+
+.yaku-row-entering {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(1px);
+}
+
+.yaku-row-leaving {
+    opacity: 0;
+    transform: translateY(-8px);
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+.yaku-cell {
+    color: #2f2f2f;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-weight: 50;
+    letter-spacing: 1px;
+}
+
+.yaku-name-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: 'ventoza-berense', sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.yaku-name-title {
+    display: block;
+}
+
+.yaku-hand-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.yaku-hand-tiles {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-top: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.yaku-mini-tile {
+    height: 30px;
+    width: auto;
+    display: block;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.yaku-hand-sep {
+    width: 1.5px;
+    height: 30px;
+    background: #bbb;
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+.yaku-mini-tile--win {
+    height: 34px;
+}
+
+.yaku-cost-cell {
+    white-space: nowrap;
+}
+
+.yaku-empty-state {
+    color: #2a2a2a;
+    margin: 20px 12px 0;
+}
+
+.yaku-search-sticky {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    width: min(500px, calc(100% - 24px));
+    border-radius: 10px;
+    background-color: var(--gray-text-1);
+    padding: 10px 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    z-index: 1200;
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.yaku-search-sticky.yaku-search-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.yaku-search-label {
+    display: block;
+    font-family: 'ventoza-progressive', sans-serif;
+    color: #1d1d1d;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.yaku-search-input {
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background-color: #f7f7f7;
+    color: #151515;
+    font-family: 'ventoza-progressive', sans-serif;
+    font-size: 16px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.yaku-search-input:focus {
+    outline: 2px solid var(--main-color);
+    box-shadow: none;
+}
+
+@media (max-width: 980px) {
+    .yaku-table-head,
+    .yaku-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .yaku-table-head {
+        display: none;
+    }
+
+    .yaku-hand-image {
+        width: 64px;
+        height: 46px;
+    }
+
+    .yaku-search-sticky {
+        bottom: 8px;
+    }
+}
+
+/* Page 03: баннер с полноширинным паттерном (без параллакса) */
+.trog-p03-banner {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    margin-bottom: 12px;
+}
+
+.trog-p03-banner-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    isolation: isolate;
+}
+
+.trog-p03-banner-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* Высветление тёмных участков паттерна — крути opacity и mix-blend-mode на глаз */
+    background-color: rgba(255, 255, 255, 0.1);
+    mix-blend-mode: screen;
+}
+
+.trog-p03-banner-pattern-mover {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 180vmax;
+    height: 180vmax;
+    margin-left: -90vmax;
+    margin-top: -90vmax;
+    background-image: url('../img/TROG-page-03/tiles-pattern.png');
+    background-repeat: repeat;
+    background-position: 0 0;
+    /* Высота тайла 1200px, ширина по пропорции файла (без сжатия): */
+    background-size: auto 1200px;
+    transform: rotate(-30deg);
+    transform-origin: center center;
+    animation: trog-p03-pattern-drift 40s linear infinite;
+}
+
+@keyframes trog-p03-pattern-drift {
+    0%   { background-position: 0 0; }
+    100% {
+        /* dx и dy кратны периоду тайла — бесшовный цикл гарантирован.
+           background-size: auto 1200px → tile height = 1200px.
+           Для кажущегося горизонтального сдвига нужен вектор под ~30°:
+           dy = 1×1200px, dx = dy×√3 ≈ 2078px */
+        background-position: 2078px 1200px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trog-p03-banner-pattern-mover {
+        animation: none;
+    }
+}
+
+.trog-p03-banner-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #111111;
+    border-radius: 50%;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'ventoza-berense', sans-serif;
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1400;
+    opacity: 0;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease, background-color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    background-color: #1a1a1a;
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid #90CC6E;
+    outline-offset: 2px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 соотношение сторон */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+}
+.video-container video, .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.black-tint-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+}
+
+.black-tint-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Затемнение, можно менять */
+    pointer-events: none; /* Чтобы клики проходили сквозь затемнение */
+}
+
+/* Контейнер для всего текста поверх видео */
+.video-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between; /* Раздвигает левый блок и правую нумерацию */
+    align-items: flex-start; /* Прижимает к верху */
+    padding: 120px;
+    box-sizing: border-box;
+    color: white;
+    z-index: 2;
+}
+
+/* Левый блок (заголовок + текст) */
+.text-left {
+    max-width: 40%; /* Чтобы текст не растягивался на всю ширину */
+}
+
+.text-left h3 {
+    margin: 0 0 30px 0;
+}
+
+.text-left p {
+    margin: 0;
+    color: white;
+}
+
+/* Нумерация в правом верхнем углу */
+.number-right h2 {
+    margin: 0;
+}
+
+/* ============================
+   VSTACK: sticky card stack (videos 01-10)
+   ============================ */
+
+.vstack-section {
+    position: relative;
+    /* height set by JS: 10 * 100vh */
+}
+
+.vstack-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.vstack-card {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+}
+
+/* Video fills the full card */
+.vstack-card .video-container {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    padding-bottom: 0; /* override the 16:9 padding trick */
+}
+
+.vstack-card .video-container video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vstack-card .video-content {
+    padding: 80px 96px;
+}
+
+/* ============================
+   VDRAW: horizontal draw section (videos 11-14)
+   ============================ */
+
+.vdraw-section {
+    position: relative;
+    /* height set by JS: 4 * 100vh */
+    background-color: var(--main-black);
+}
+
+.vdraw-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.vdraw-col {
+    flex-shrink: 0;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    will-change: width;
+}
+
+.vdraw-col .video-container {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    padding-bottom: 0;
+    width: 100%;
+}
+
+.vdraw-col .video-container video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vdraw-col .video-content {
+    padding: 40px 28px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.vdraw-col .text-left {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.vdraw-col .text-left h3 {
+    font-size: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.vdraw-col .text-left .vdraw-desc {
+    font-size: 12px;
+    line-height: 1.55;
+    letter-spacing: 0.5px;
+    opacity: 1;
+    max-height: 120px;
+    overflow: hidden;
+    transition: opacity 0.25s ease, max-height 0.35s ease;
+}
+
+.akagi-pages {
+    gap: 8px;
+    padding: 24px;
+    align-items: stretch;
+}
+
+.akagi-page {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 420px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.akagi-page:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+/* ── Lightbox ──────────────────────────────────────────────── */
+.akagi-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    cursor: zoom-out;
+}
+
+.akagi-lightbox.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.akagi-lightbox__img {
+    max-width: 90vw;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 6px;
+    cursor: default;
+    transform: scale(0.92);
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+}
+
+.akagi-lightbox.is-open .akagi-lightbox__img {
+    transform: scale(1);
+}
+
+.akagi-lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    transition: color 0.2s ease;
+    font-family: 'ventoza-berense', sans-serif;
+}
+
+.akagi-lightbox__close:hover {
+    color: #fff;
+}
+
+.akagi-portrait-01 {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Hide description when column is narrow */
+.vdraw-col.is-narrow .text-left .vdraw-desc {
+    opacity: 0;
+    max-height: 0;
+}
+
+/* Общий заголовок "Ничья" поверх всех колонок */
+.vdraw-title {
+    position: absolute;
+    top: 36px;
+    left: 48px;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.vdraw-title h2 {
+    color: #ffffff;
+    font-size: 56px;
+    text-align: left;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+
+.vdraw-col .number-right {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+}
+
+/* Нумерация: серая по умолчанию, белая у активной колонки */
+.vdraw-col .number-right h2 {
+    font-size: 40px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.22);
+    transition: color 0.45s ease;
+}
+
+.vdraw-col.is-draw-active .number-right h2 {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* ============================
+   DOT NAVIGATION
+   ============================ */
+
+.dot-nav {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1300;
+    pointer-events: none; /* контейнер не блокирует клики на странице */
+}
+
+.dot-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.dot-nav__btn {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 0;
+    outline: none;
+}
+
+/* Подпись слева от точки */
+.dot-nav__label {
+    font-family: 'ventoza-progressive', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+    transition: color 0.25s ease, opacity 0.25s ease;
+    /* Появляется при наведении или активном состоянии */
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+
+.dot-nav__btn:hover .dot-nav__label,
+.dot-nav__btn.is-active .dot-nav__label {
+    opacity: 1;
+    transform: translateX(0);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Сама точка */
+.dot-nav__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(34, 177, 76, 0);
+    transition:
+        width          0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        height         0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background-color 0.3s ease,
+        box-shadow     0.3s ease;
+}
+
+.dot-nav__btn:hover .dot-nav__dot {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Активное состояние: зеленая + кольцо */
+.dot-nav__btn.is-active .dot-nav__dot {
+    width: 11px;
+    height: 11px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 0 3px rgba(34, 177, 76, 0.35);
+}
+
+/* ============================
+   BANNER INTRO ANIMATION
+   ============================ */
+
+/* ── Keyframes ─────────────────────────────────────────────────────────── */
+
+@keyframes bniOpacity {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes bniLineReveal {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes bniFadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes bniFadeLeft {
+    from { opacity: 0; transform: translateX(-42px); }
+    to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes bniFadeRight {
+    from { opacity: 0; transform: translateX(32px);  }
+    to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes bniScaleIn {
+    from { opacity: 0; transform: scale(0.55); }
+    to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes bniLineDraw {
+    from { stroke-dashoffset: 3000; }
+    to   { stroke-dashoffset: 0;    }
+}
+
+/* ── Parallax-картинки: только opacity (transform — у parallax.js) ─────── */
+
+#g-star-004        { animation: bniOpacity 1.4s ease-out both; }
+#TROG-table-01     { animation: bniOpacity 0.9s ease-out both; animation-delay: 0s;    }
+#TROG-tanuki-01    { animation: bniOpacity 1s   ease-out both; animation-delay: .1s;   }
+#TROG-tail-01      { animation: bniOpacity 0.8s ease-out both; animation-delay: .2s;   }
+#TROG-hand-01      { animation: bniOpacity 0.7s ease-out both; animation-delay: .18s;  }
+#TROG-tile-hand-01 { animation: bniOpacity 0.7s cubic-bezier(0.22,1,.36,1) both; animation-delay: .35s; }
+#TROG-tiles-01_1   { animation: bniOpacity 0.8s ease-out both; animation-delay: .22s;  }
+#TROG-tiles-01     { animation: bniOpacity 0.8s ease-out both; animation-delay: .3s;   }
+
+/* ── Text reveal ──────────────────────────────────────────────────────── */
+
+/* H1: каждая строка выезжает снизу из-за невидимой черты.
+   padding + отрицательный margin расширяют зону overflow:hidden
+   так, чтобы курсивные засечки не обрезались, но layout не менялся. */
+.bni-line-wrap {
+    display: block;
+    /* клиппинг больше не нужен — текст появляется через opacity */
+}
+
+.bni-line {
+    display: block;
+    animation: bniLineReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Остальные текстовые элементы */
+.bni-fade-up    { animation: bniFadeUp    0.7s ease-out both; }
+.bni-fade-left  { animation: bniFadeLeft  0.85s ease-out both; }
+.bni-fade-right { animation: bniFadeRight 0.7s ease-out both; }
+.bni-scale-in   { animation: bniScaleIn   0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* SVG-линия: рисуется слева направо */
+.bni-svg-line {
+    stroke-dasharray: 3000;
+    animation: bniLineDraw 0.75s ease-out both;
+}
+
+/* Уважаем prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    #g-star-004, #TROG-table-01, #TROG-tanuki-01, #TROG-tail-01,
+    #TROG-hand-01, #TROG-tile-hand-01, #TROG-tiles-01_1, #TROG-tiles-01,
+    .bni-line, .bni-fade-up, .bni-fade-left, .bni-fade-right,
+    .bni-scale-in, .bni-svg-line {
+        animation: none;
+    }
+}
+/* ── Origin cards (page-4: версии появления игры) ────────────────────────── */
+
+.origin-cards {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 48px;
+    align-items: stretch;
+}
+
+.origin-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--gray-text-2);
+    border-radius: 16px;
+    padding: 24px 20px 28px;
+    box-sizing: border-box;
+}
+
+.origin-card h3 {
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--gray-text-2);
+    margin: 0 0 20px 0;
+    text-align: left;
+    line-height: 1;
+}
+
+.origin-card__img-placeholder {
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    background-color: rgba(212, 212, 212, 0.12);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.origin-card__img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.origin-card p {
+    font-size: 15px;
+    font-weight: 100;
+    color: var(--gray-text-1);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── Tiles marquee (page-4: бесконечная лента тайлов) ────────────────────── */
+
+.tiles-marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-top: -70px;      /* заезжает под предыдущий блок */
+    padding: 0;
+    line-height: 0;
+    position: relative;
+    z-index: -1;             /* ниже контент-блока (z-index: 1) */
+}
+
+.tiles-marquee-track {
+    display: flex;
+    gap: 4px;               /* зазор между тайлами */
+    width: max-content;
+    animation: tileScroll 32s linear infinite;
+    will-change: transform;
+}
+
+.tiles-marquee-img {
+    height: 120px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+@keyframes tileScroll {
+    from { transform: translateX(-10%); }
+    to   { transform: translateX(-43.33%); } /* ровно половина трека — дубль бесшовен */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tiles-marquee-track { animation: none; }
+}
+
+/* ── Akagi banner bg rotation ───────────────────────────── */
+@keyframes slowSpin {
+    from { transform: translate(calc(-50% + 300px), -50%) rotate(0deg); }
+    to   { transform: translate(calc(-50% + 300px), -50%) rotate(360deg); }
+}
+
+#akagi-parallax-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: auto;
+    animation: slowSpin 60s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── Full-width video block ───────────────────────────────────────────────── */
+
+.fullwidth-video-wrap {
+    width: 100%;
+    margin-bottom: 12px;
+    line-height: 0;
+}
+
+.fullwidth-video-wrap video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ================================================================
+   АДАПТИВНОСТЬ
+   ================================================================ */
+
+/* ── Планшет ≤ 1024px ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+    h1 { font-size: 64px; line-height: 60px; }
+    h2 { font-size: 48px; }
+    h3 { font-size: 28px; }
+    h4 { font-size: 28px; }
+    h5 { font-size: 18px; }
+
+    .hh  { font-size: 50px; line-height: 56px; }
+    .hh2 { font-size: 32px; line-height: 40px; }
+
+    .header-content { padding: 0 48px; }
+    .header-nav { gap: 28px; }
+
+    .square { width: 80px; }
+    .square h2 { font-size: 44px; }
+
+    .p-t-100  { padding-top: 64px; }
+    .p-b-50   { padding-bottom: 32px; }
+    .p-b-100  { padding-bottom: 64px; }
+    .p-b-150  { padding-bottom: 96px; }
+    .p-b-200  { padding-bottom: 120px; }
+
+    .m-b-100-block { margin-bottom: 120px; }
+    .m-b-50-block  { margin-bottom: 64px; }
+    .m-t-100-block { margin-top: 64px; }
+    .m-t-50-block  { margin-top: 32px; }
+
+    .video-content { padding: 72px 48px; }
+    .vstack-card .video-content { padding: 52px 48px; }
+
+    .origin-card { min-height: 400px; }
+    .tiles-marquee-img { height: 90px; }
+
+    .yaku-round-goal-star-wrap { width: 560px; height: 560px; }
+}
+
+/* ── Мобильный ≤ 768px ────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Типографика */
+    h1 { font-size: 38px; line-height: 36px; }
+    h2 { font-size: 30px; }
+    h3 { font-size: 20px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 15px; }
+
+    .hh  { font-size: 32px; line-height: 36px; }
+    .hh2 { font-size: 22px; line-height: 28px; }
+
+    /* Хедер */
+    .header-content { padding: 0 16px; }
+    .header-nav { gap: 14px; }
+    .header-nav a { font-size: 10px; }
+
+    /* Контейнеры */
+    .padding-block-container { padding-left: 16px; padding-right: 16px; }
+
+    /* Квадраты */
+    .square { width: 56px; }
+    .square h2 { font-size: 28px; }
+
+    /* Отступы */
+    .p-t-100  { padding-top: 40px; }
+    .p-b-50   { padding-bottom: 20px; }
+    .p-b-100  { padding-bottom: 40px; }
+    .p-b-150  { padding-bottom: 60px; }
+    .p-b-200  { padding-bottom: 80px; }
+
+    .m-b-100-block { margin-bottom: 64px; }
+    .m-b-50-block  { margin-bottom: 40px; }
+    .m-b-25-block  { margin-bottom: 20px; }
+    .m-t-100-block { margin-top: 40px; }
+    .m-t-50-block  { margin-top: 20px; }
+
+    /* Флекс-ряды → колонки */
+    .block-horizontal-align { flex-direction: column; }
+    .block-container-horizontal { flex-direction: column; }
+    .block-container { width: 100% !important; }
+
+    /* Origin cards */
+    .origin-cards { flex-direction: column; }
+    .origin-card { min-height: auto; }
+    .origin-card__img-placeholder { aspect-ratio: 1 / 1; }
+    .origin-card h3 { font-size: 32px; }
+
+    /* Видео */
+    .video-content {
+        padding: 32px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .text-left { max-width: 100%; }
+    .vstack-card .video-content { padding: 32px 20px; }
+    .vdraw-col .video-content { padding: 24px 16px; }
+    .vdraw-title { left: 20px; top: 20px; }
+    .vdraw-title h2 { font-size: 32px; }
+
+    /* Карточки блока */
+    .block-cards-main { height: 320px; }
+
+    /* Gradient block */
+    .gradient-block { padding: 8px 16px 6px 16px; }
+
+    /* Навигационные точки */
+    .dot-nav { right: 10px; }
+    .dot-nav__list { gap: 14px; }
+    .dot-nav__label { display: none; }
+
+    /* Кнопка наверх */
+    .back-to-top { right: 12px; bottom: 12px; width: 40px; height: 40px; font-size: 18px; }
+
+    /* Тайлы-бегущая строка */
+    .tiles-marquee-img { height: 64px; }
+    .tiles-marquee-wrap { margin-top: -40px; }
+
+    /* Яку-секция */
+    .yaku-round-goal-star-wrap { width: 340px; height: 340px; }
+    .yaku-round-goal-content { padding-top: 48px; padding-bottom: 48px; }
+
+    /* Акаги баннер */
+    #akagi-parallax-bg { width: 300%; }
+    .akagi-1-pin-wrap { width: 22%; }
+    .akagi-light-03 { width: 80% !important; }
+
+    /* Футер */
+    #footer { padding: 16px; }
+}
+
+/* ── Маленький экран ≤ 480px ──────────────────────────────────── */
+@media (max-width: 480px) {
+
+    h1 { font-size: 28px; line-height: 26px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 17px; }
+
+    .hh  { font-size: 24px; line-height: 28px; }
+    .hh2 { font-size: 18px; }
+
+    .header-nav { gap: 10px; }
+    .header-nav a { font-size: 9px; }
+
+    .square { width: 44px; }
+    .square h2 { font-size: 22px; }
+
+    .origin-card h3 { font-size: 24px; }
+
+    .vdraw-title h2 { font-size: 24px; }
+    .vdraw-col .text-left h3 { font-size: 16px; }
+
+    .tiles-marquee-img { height: 48px; }
+
+    .yaku-round-goal-star-wrap { width: 260px; height: 260px; }
+
+    #akagi-parallax-bg { width: 400%; }
+    .akagi-light-03 { width: 96% !important; }
+    .akagi-1-pin-wrap { width: 28%; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   YAKUZA BANNER (page-4)
+══════════════════════════════════════════════════════════ */
+.yakuza-banner {
+    position: relative;
+    background: #c3c3c3;   /* нейтральный серый, как фон сайта */
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 580px;
+    width: 100%;
+}
+
+/* ── Левая информационная колонка ── */
+.yakuza-banner__left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+    max-width: 380px;
+    padding: 28px 0 0 72px;
+    flex-shrink: 0;
+    gap: 0;
+}
+
+.yakuza-banner__logo {
+    width: 90%;
+    max-width: 340px;
+    margin-bottom: 6px;
+}
+
+.yakuza-banner__studio {
+    font-size: 32px;
+    margin: 0 0 14px;
+}
+
+.yakuza-banner__desc {
+    font-size: 10.5px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    max-width: 230px;
+    margin-bottom: auto;
+}
+
+.yakuza-banner__bottom-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0 12px;
+}
+
+.yakuza-banner__age {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 900;
+    color: #111;
+    line-height: 1;
+}
+
+.yakuza-banner__sold {
+    font-size: 10px;
+    line-height: 1.5;
+    color: #3a3a3a;
+}
+
+.yakuza-banner__sold small {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.yakuza-banner__sega {
+    height: 28px;
+    width: auto;
+}
+
+/* ── Персонаж ── */
+.yakuza-banner__char {
+    position: absolute;
+    left: 32%;
+    right: 8%;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.yakuza-banner__char img {
+    height: 560px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* ── Кандзи справа ── */
+.yakuza-banner__kanji {
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    padding: 20px 72px 20px 10px;
+    font-weight: 900;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+/* ── Год ── */
+.yakuza-banner__year {
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+    font-size: 9.5px;
+    color: #666;
+    letter-spacing: 0.08em;
+    z-index: 3;
+}
+
+@media (max-width: 768px) {
+    .yakuza-banner        { min-height: 360px; }
+    .yakuza-banner__left  { width: 46%; padding-top: 20px; }
+    .yakuza-banner__logo  { width: 95%; max-width: none; }
+    .yakuza-banner__char  { left: 34%; right: 6%; }
+    .yakuza-banner__char img { height: 360px; }
+    .yakuza-banner__kanji { font-size: 40px; padding: 14px 14px 14px 8px; }
+    .yakuza-banner__year  { right: 60px; }
+}
+
+@media (max-width: 480px) {
+    .yakuza-banner        { min-height: 280px; }
+    .yakuza-banner__left  { width: 55%; max-width: none; }
+    .yakuza-banner__kanji { font-size: 30px; padding: 12px 10px; }
+    .yakuza-banner__char  { left: 40%; right: 4%; }
+    .yakuza-banner__char img { height: 270px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   KAIJI BANNER (page-4)
+══════════════════════════════════════════════════════════ */
+.kaiji-banner {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+/* ── Вспышка — самый нижний фоновый слой, чуть правее центра ── */
+.kaiji-banner__flash {
+    position: absolute;
+    top: 50%;
+    left: -15%;
+    transform: translate(-10%, -50%);
+    width: 200%;
+    pointer-events: none;
+    z-index: -1;
+    -webkit-user-drag: none;
+}
+
+/* ── Персонаж — фон поверх вспышки, заполняет блок ── */
+.kaiji-banner__char {
+    position: absolute;
+    left: 23%;
+    top: -3%;
+    height: 100%;
+    width: 65%;
+    object-fit: cover;
+    object-position: top center;
+    pointer-events: none;
+    z-index: 2;
+    -webkit-user-drag: none;
+}
+
+/* ── Правая колонка ── */
+.kaiji-banner__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 44%;
+    flex-shrink: 0;
+    padding: 0 72px 40px 0;
+}
+
+/* ── Область логотипа ── */
+.kaiji-banner__logo-area {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.kaiji-banner__logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+    display: block;
+    -webkit-user-drag: none;
+}
+
+/* ── Инфо-блоки снизу справа ── */
+.kaiji-banner__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.kaiji-banner__info-card {
+    background: var(--main-black);
+    border-radius: 12px;
+    padding: 12px 16px;
+    text-align: right;
+    min-width: 210px;
+}
+
+.kaiji-banner__info-label {
+    font-size: 11px;
+    color: var(--gray-text-1);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin: 0 0 4px;
+}
+
+.kaiji-banner__info-value {
+    color: var(--gray-text-2);
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ── Каnji-заголовок снизу слева ── */
+.kaiji-banner__title {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    z-index: 3;
+    background: white;
+    padding: 14px 28px;
+}
+
+@media (max-width: 768px) {
+    .kaiji-banner           { min-height: 380px; }
+    .kaiji-banner__content  { width: 50%; padding-right: 20px; }
+    .kaiji-banner__title    { font-size: 20px; padding: 10px 18px; bottom: 24px; }
+    .kaiji-banner__flash    { width: 160%; }
+}
+
+@media (max-width: 480px) {
+    .kaiji-banner           { min-height: 300px; }
+    .kaiji-banner__content  { width: 58%; padding-right: 12px; }
+    .kaiji-banner__logo     { width: 90%; }
+    .kaiji-banner__title    { font-size: 14px; padding: 8px 12px; bottom: 16px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   КОМБИНАЦИИ — блок с тайлами на странице правил
+   ══════════════════════════════════════════════════════════════ */
+
+/* Обёртка всего блока — центрируется как единое целое */
+.combo-block {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* Одна строка: [тайлы][текст] */
+.combo-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Колонка тайлов — фиксированная ширина, тайлы прижаты вправо */
+.combo-tiles-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    flex: 0 0 220px;
+}
+
+/* Колонка текста — фиксированная ширина, чтобы все строки были одинаковой ширины */
+.combo-desc {
+    width: 340px;
+    margin: 0;
+}
+
+.combo-tile {
+    height: 68px;
+    width: auto;
+    display: block;
+    transition: opacity 0.18s ease;
+}
+
+/* fade-out класс, добавляемый JS-ом */
+.combo-tile--hidden {
+    opacity: 0 !important;
+}
+
+/* Bounce-анимация при клике */
+@keyframes combo-bounce {
+    0%   { transform: scale(1)    rotate(0deg); }
+    25%  { transform: scale(0.80) rotate(-6deg); }
+    60%  { transform: scale(1.10) rotate(3deg); }
+    80%  { transform: scale(0.96) rotate(-1deg); }
+    100% { transform: scale(1)    rotate(0deg); }
+}
+.combo-tile--bounce {
+    animation: combo-bounce 0.28s ease forwards;
+}
+
+/* hover-подсказка: строка кликабельна / перетаскиваема */
+.combo-row[data-combo] {
+    cursor: grab;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+    padding: 8px 10px;
+    margin: -8px -10px;
+    user-select: none;
+}
+.combo-row[data-combo]:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+.combo-row[data-combo]:hover .combo-tiles-col {
+    filter: brightness(1.08) drop-shadow(0 2px 8px rgba(34,177,76,0.25));
+}
+
+/* Floating-клон при перетаскивании */
+.combo-tile-drag-clone {
+    cursor: grabbing;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ПОБЕДНАЯ РУКА — блок «Комбинация» на странице правил
+   ══════════════════════════════════════════════════════════════ */
+
+/* Шапка: заголовок слева, подпись справа */
+.winhand-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.winhand-header p {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* Ряд из 5 групп тайлов */
+.winhand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 64px;
+}
+
+/* Одна группа: тайлы + подпись */
+.winhand-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+/* Отступ между группами */
+.winhand-sep {
+    width: 32px;
+    flex-shrink: 0;
+}
+
+/* Тайлы внутри группы */
+.winhand-tiles {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.winhand-tile {
+    height: 96px;
+    width: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+/* Подпись под группой */
+.winhand-label {
+    font-family: 'ventoza-progressive', sans-serif;
+    color: var(--gray-text-1);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   РУКА 13+1 ТАЙЛОВ — блок «Каждый ход» на странице правил
+   ══════════════════════════════════════════════════════════════ */
+
+.handrow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.handrow-main {
+    display: flex;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.handrow-tile {
+    height: 94px;
+    width: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+/* Тянутый тайл — лёгкая белая обводка */
+.handrow-tile--drawn {
+    outline: 1.5px solid rgba(255, 255, 255, 0.22);
+    box-shadow: none;
+}
+
+/* ── Анимация: падение сверху, слева направо ── */
+.handrow.hr-ready .handrow-tile {
+    opacity: 0;
+    transform: translateY(-22px);
+}
+
+.handrow.hr-animate .handrow-tile {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.36s ease, transform 0.36s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .handrow.hr-ready .handrow-tile { opacity: 1; transform: none; }
+}
+
+/* ── Анимация комбо-блока: вылет строк слева при скролле ── */
+
+.combo-block.cb-ready .combo-row {
+    opacity: 0;
+    transform: translateX(-44px);
+}
+
+.combo-block.cb-animate .combo-row {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .combo-block.cb-ready .combo-row { opacity: 1; transform: none; }
+}
+
+/* ── Анимация палочек: вылет слева направо при скролле ── */
+
+.stick-list.sl-ready .stick-block,
+.stick-list.sl-ready .stick-label {
+    opacity: 0;
+    transform: translateX(-48px);
+}
+
+.stick-list.sl-animate .stick-block,
+.stick-list.sl-animate .stick-label {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stick-list.sl-ready .stick-block,
+    .stick-list.sl-ready .stick-label { opacity: 1; transform: none; }
+}
+
+/* ── Анимация появления тайлов при скролле ── */
+
+/* JS добавляет .wh-ready сразу — скрываем всё до триггера */
+.winhand.wh-ready .winhand-tile,
+.winhand.wh-ready .winhand-label {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* JS добавляет .wh-animate при попадании в viewport */
+.winhand.wh-animate .winhand-tile,
+.winhand.wh-animate .winhand-label {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.38s ease, transform 0.38s ease;
+}
+
+@media (max-width: 768px) {
+    .winhand { flex-wrap: wrap; gap: 32px; justify-content: center; }
+    .winhand-sep { display: none; }
+    .winhand-group { flex: 0 0 40%; }
+    .winhand-tile { height: 64px; }
+    .winhand-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .winhand.wh-ready .winhand-tile,
+    .winhand.wh-ready .winhand-label { opacity: 1; transform: none; }
+}
+
+/* ── Анимации при скролле — index ───────────────────────────────────────── */
+.idx-up  { opacity: 0; transform: translateY(28px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.idx-up.idx-in { opacity: 1; transform: none; }
+
+.idx-cards .block-cards-main { opacity: 0; transform: translateY(24px); transition: opacity 0.45s ease, transform 0.45s ease; }
+.idx-cards.idx-in .block-cards-main { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .idx-up { opacity: 1; transform: none; }
+    .idx-cards .block-cards-main { opacity: 1; transform: none; }
+}
+
+/* ── Анимации при скролле — page-4 ──────────────────────────────────────── */
+.p4-up    { opacity: 0; transform: translateY(32px);  transition: opacity 0.55s ease, transform 0.55s ease; }
+.p4-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.p4-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.55s ease, transform 0.55s ease; }
+
+.p4-up.p4-in,
+.p4-left.p4-in,
+.p4-right.p4-in { opacity: 1; transform: none; }
+
+.p4-cards .origin-card {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.48s ease, transform 0.48s ease;
+}
+.p4-cards.p4-in .origin-card { opacity: 1; transform: none; }
+
+.p4-pages .akagi-page {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.p4-pages.p4-in .akagi-page {
+    opacity: 1;
+    transform: none;
+    /* восстанавливаем оригинальный hover-transition */
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.p4-pages.p4-in .akagi-page:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .p4-up, .p4-left, .p4-right,
+    .p4-cards .origin-card,
+    .p4-pages .akagi-page { opacity: 1 !important; transform: none !important; }
+}
+
+/* ── Анимация тайлов в блоке «Подсчёт очков» ────────────────────────────── */
+.sc-ready .winhand-tile,
+.sc-ready .winhand-label {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.sc-animate .winhand-tile,
+.sc-animate .winhand-label {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.38s ease, transform 0.38s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+    .sc-ready .winhand-tile,
+    .sc-ready .winhand-label { opacity: 1; transform: none; }
+}

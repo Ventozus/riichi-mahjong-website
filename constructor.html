@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор руки — Маджонг РИМА</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/constructor.css">
+    <link rel="stylesheet" href="css/preloader.css">
+    <script src="js/header.js" defer></script>
+</head>
+<body style="background-color: var(--main-black);">
+<script src="js/preloader.js"></script>
+
+<!-- хедер -->
+<div class="blk-bg-clr" id="header">
+    <div class="header-content">
+        <div class="logo">
+            <img src="img/logo-png/Logo-Rima-Main.png" class="logo-rima-header">
+        </div>
+        <nav class="header-nav">
+            <a href="/page-4.html">в культуре</a>
+            <a href="/constructor.html">конструктор рук</a>
+            <a href="/page-2.html">правила</a>
+            <a href="/page-3.html">стоимость рук</a>
+            <a href="/index.html">главная</a>
+        </nav>
+    </div>
+</div>
+
+<!-- баннер -->
+<div class="blk-bg-clr con-banner">
+    <div class="padding-block-container con-banner__inner">
+        <div>
+            <h1 class="con-banner__title">КОНСТРУКТОР</h1>
+            <h3 class="con-banner__subtitle">СОБРАТЬ РУКУ</h3>
+        </div>
+        <div class="con-banner__nums">
+            <div class="square"><h2>#</h2></div>
+            <div class="square"><h2>04</h2></div>
+        </div>
+    </div>
+</div>
+
+<!-- конструктор -->
+<div class="blk-bg-clr con-wrap">
+    <div class="con-layout">
+
+        <!-- Зона A: Палитра тайлов -->
+        <aside class="con-palette">
+            <div class="con-palette__group">
+                <div class="con-palette__suit-label">万</div>
+                <div class="con-palette__row" id="palette-man"></div>
+            </div>
+            <div class="con-palette__group">
+                <div class="con-palette__suit-label">筒</div>
+                <div class="con-palette__row" id="palette-pin"></div>
+            </div>
+            <div class="con-palette__group">
+                <div class="con-palette__suit-label">索</div>
+                <div class="con-palette__row" id="palette-sou"></div>
+            </div>
+            <div class="con-palette__group">
+                <div class="con-palette__suit-label">風</div>
+                <div class="con-palette__row" id="palette-wind"></div>
+            </div>
+            <div class="con-palette__group">
+                <div class="con-palette__suit-label">三元</div>
+                <div class="con-palette__row" id="palette-dragon"></div>
+            </div>
+        </aside>
+
+        <!-- Зона B + C: Рука и результаты -->
+        <div class="con-main">
+
+            <!-- Рука игрока -->
+            <div class="con-hand-section">
+                <div class="con-hand" id="con-hand">
+                    <div class="con-hand-label">Рука — <span id="tile-count">0</span> из 14</div>
+                    <div class="con-hand__empty">Нажмите на тайл в палитре слева</div>
+                </div>
+            </div>
+
+            <!-- Контролы -->
+            <div class="con-controls">
+                <div class="con-ctrl-row">
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Ветер раунда</div>
+                        <div class="con-ctrl-btns" id="round-wind-btns">
+                            <button class="con-btn con-btn--wind is-active" data-wind="e">東</button>
+                            <button class="con-btn con-btn--wind" data-wind="s">南</button>
+                            <button class="con-btn con-btn--wind" data-wind="w">西</button>
+                            <button class="con-btn con-btn--wind" data-wind="n">北</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Ветер игрока</div>
+                        <div class="con-ctrl-btns" id="seat-wind-btns">
+                            <button class="con-btn con-btn--wind is-active" data-wind="e">東</button>
+                            <button class="con-btn con-btn--wind" data-wind="s">南</button>
+                            <button class="con-btn con-btn--wind" data-wind="w">西</button>
+                            <button class="con-btn con-btn--wind" data-wind="n">北</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Победа</div>
+                        <div class="con-ctrl-btns">
+                            <button class="con-btn is-active" id="btn-ron">Рон</button>
+                            <button class="con-btn" id="btn-tsumo">Цумо</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Рука</div>
+                        <div class="con-ctrl-btns">
+                            <button class="con-btn is-active" id="btn-closed">Закрытая</button>
+                            <button class="con-btn" id="btn-open">Открытая</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="con-ctrl-row">
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Бонусы</div>
+                        <div class="con-ctrl-btns">
+                            <button class="con-btn con-btn--toggle" id="btn-riichi">Риичи</button>
+                            <button class="con-btn con-btn--toggle" id="btn-ippatsu" disabled>Ипацу</button>
+                            <button class="con-btn con-btn--toggle" id="btn-dbl-riichi">Дабл</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Хомбо</div>
+                        <div class="con-counter">
+                            <button class="con-counter__btn" id="honbo-dec">−</button>
+                            <span class="con-counter__val" id="honbo-val">0</span>
+                            <button class="con-counter__btn" id="honbo-inc">+</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Дора</div>
+                        <div class="con-counter">
+                            <button class="con-counter__btn" id="dora-dec">−</button>
+                            <span class="con-counter__val" id="dora-val">0</span>
+                            <button class="con-counter__btn" id="dora-inc">+</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group">
+                        <div class="con-ctrl-label">Ура-дора</div>
+                        <div class="con-counter">
+                            <button class="con-counter__btn" id="uradora-dec">−</button>
+                            <span class="con-counter__val" id="uradora-val">0</span>
+                            <button class="con-counter__btn" id="uradora-inc">+</button>
+                        </div>
+                    </div>
+                    <div class="con-ctrl-group con-ctrl-group--actions">
+                        <button class="con-btn con-btn--sm" id="btn-sort">↕ Сорт.</button>
+                        <button class="con-btn con-btn--sm con-btn--danger" id="btn-clear">✕ Очистить</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Результат -->
+            <div class="con-results" id="con-results">
+                <div class="con-results__placeholder">Добавьте 14 тайлов для расчёта</div>
+            </div>
+
+        </div><!-- /con-main -->
+    </div><!-- /con-layout -->
+</div><!-- /con-wrap -->
+
+<!-- футер -->
+<div class="block-container blk-bg-clr" id="footer">
+<div class="padding-block-container footer-inner">
+
+    <!-- Лого и соцсети -->
+    <div class="footer-logo-col">
+        <img src="img/logo-png/Logo-Rima-Main.png" class="logo-rima">
+        <img src="img/logo-png/VH-logo-gray.png" class="logo-vhutein">
+        <div class="footer-social">
+            <img src="img/logo-svg/vk-white.svg" class="s-media-icons" style="margin-left:0">
+            <img src="img/logo-svg/tg-white.svg" class="s-media-icons">
+        </div>
+    </div>
+
+    <!-- Ссылки по разделам -->
+    <nav class="footer-nav-cols">
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Маджонг</p>
+            <a href="/index.html#section-mahjong">Что такое маджонг</a>
+            <a href="/index.html#section-tile">Тайл</a>
+            <a href="/index.html#section-goal">Цель игры</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Правила</p>
+            <a href="/page-2.html#section-suits">Масти тайлов</a>
+            <a href="/page-2.html#section-basics">Рука и палочки</a>
+            <a href="/page-2.html#section-score">Подсчёт очков</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">Таблица</p>
+            <a href="/page-3.html">Стоимость рук</a>
+            <a href="/constructor.html">Конструктор рук</a>
+        </div>
+        <div class="footer-nav-col">
+            <p class="footer-nav-col__title">В культуре</p>
+            <a href="/page-4.html#section-versions">Зарождение игры</a>
+            <a href="/page-4.html#section-yakuza">Маджонг в играх</a>
+            <a href="/page-4.html#section-akagi">Маджонг в аниме</a>
+            <a href="/page-4.html#section-kaiji">Кайдзи</a>
+        </div>
+    </nav>
+
+</div>
+</div>
+
+<!-- <button class="back-to-top" type="button" aria-label="Наверх">↑</button> -->
+<script src="js/back-to-top.js"></script>
+<script src="js/constructor.js"></script>
+</body>
+</html>
